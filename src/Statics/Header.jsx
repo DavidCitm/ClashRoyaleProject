@@ -1,7 +1,6 @@
-import React, { useState } from "react";
-
-
 import React from "react";
+import "./header.css";
+
 
 export default function Header() {
   return (
@@ -11,7 +10,7 @@ export default function Header() {
         <a href="#">Inicio</a>
         <a href="#cartas">Cartas</a>
         <a href="#arenas">Arenas</a>
-        <a href="#favoritos">Favoritos</a>
+        <a href="#mazos">Tus mazos</a>
       </nav>
     </header>
   );
