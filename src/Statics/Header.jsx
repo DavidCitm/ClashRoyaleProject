@@ -1,16 +1,19 @@
 import React from "react";
 import "./header.css";
 
-
 export default function Header() {
   return (
     <header>
-      <h1>Mi Sitio</h1>
-      <nav>
+      <div className="left">
         <a href="#">Inicio</a>
-        <a href="#cartas">Cartas</a>
-        <a href="#arenas">Arenas</a>
-        <a href="#mazos">Tus mazos</a>
+        <a href="#servicios">Servicios</a>
+      </div>
+
+      <h1 className="center">Clash Royale</h1>
+
+      <nav className="right">
+        <a href="#equipo">Equipo</a>
+        <a href="#contacto">Contacto</a>
       </nav>
     </header>
   );
