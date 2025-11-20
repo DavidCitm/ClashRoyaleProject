@@ -1,7 +1,8 @@
-import Body from "./Body";
 import './App.css';
+import Body from "./Body";
 import Header from "./Estatics/Header";
 import Footer from "./Estatics/Footer";
+
 
 function App() {
   return (
