@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { supabase } from "./supabaseClient";
+import './Body.css';
 
 export default function Body() {
   const [arenas, setArenas] = useState([]);
@@ -30,15 +31,13 @@ export default function Body() {
   if (loading) return <p style={{ padding: 20 }}>Cargando datos...</p>;
 
   return (
-    <div style={{ padding: 20, fontFamily: "Arial" }}>
+    <div className="body-container">
       <h1>📊 Base de datos Clash Royale</h1>
 
       {/* ARENAS */}
       <h2>🏟️ Arenas</h2>
-      {arenas.length === 0 ? (
-        <p>No hay datos</p>
-      ) : (
-        <table border="1" cellPadding="8" style={{ marginBottom: 30 }}>
+      {arenas.length === 0 ? <p>No hay datos</p> : (
+        <table>
           <thead>
             <tr>
               <th>ID</th>
@@ -62,10 +61,8 @@ export default function Body() {
 
       {/* NIVELES */}
       <h2>📈 Niveles</h2>
-      {niveles.length === 0 ? (
-        <p>No hay datos</p>
-      ) : (
-        <table border="1" cellPadding="8" style={{ marginBottom: 30 }}>
+      {niveles.length === 0 ? <p>No hay datos</p> : (
+        <table>
           <thead>
             <tr>
               <th>Rareza</th>
@@ -87,10 +84,8 @@ export default function Body() {
 
       {/* PERSONAJES */}
       <h2>🧙 Personajes</h2>
-      {personajes.length === 0 ? (
-        <p>No hay datos</p>
-      ) : (
-        <table border="1" cellPadding="8" style={{ marginBottom: 30 }}>
+      {personajes.length === 0 ? <p>No hay datos</p> : (
+        <table>
           <thead>
             <tr>
               <th>ID</th>
@@ -116,10 +111,8 @@ export default function Body() {
 
       {/* PERSONAJE STATS */}
       <h2>⚔️ Stats de Personajes</h2>
-      {stats.length === 0 ? (
-        <p>No hay datos</p>
-      ) : (
-        <table border="1" cellPadding="8">
+      {stats.length === 0 ? <p>No hay datos</p> : (
+        <table>
           <thead>
             <tr>
               <th>ID Stats</th>

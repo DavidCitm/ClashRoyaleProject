@@ -1,0 +1,13 @@
+.body-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 20px;
+  box-sizing: border-box;
+
+  margin-top: 80px; /* <-- Empieza más abajo que el header */
+}

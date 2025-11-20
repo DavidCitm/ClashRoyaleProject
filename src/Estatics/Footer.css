@@ -1,0 +1,36 @@
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 60px;                 /* Altura del footer */
+  background-color: #00b0fd;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10px;              /* Padding reducido para que no se salga el botón */
+  box-sizing: border-box;
+  z-index: 1000;
+}
+
+.footer-left,
+.footer-center,
+.footer-right {
+  flex: 1;
+  display: flex;
+  justify-content: center;      /* Centra los botones dentro de cada zona */
+}
+
+.footer-left { justify-content: flex-start; }
+.footer-center { justify-content: center; }
+.footer-right { justify-content: flex-end; }
+
+.footer button {
+  background-color: white;
+  color: #00b0fd;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  max-width: 90%;               /* Evita que los botones se salgan de la pantalla */
+  box-sizing: border-box;
+}
