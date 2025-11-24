@@ -1,0 +1,49 @@
+.homepage {
+  padding: 100px 20px; /* margen superior e inferior */
+  font-family: Arial, sans-serif;
+}
+
+.search-input {
+  margin-bottom: 20px;
+  padding: 8px;
+  font-size: 16px;
+  width: 100%;
+  max-width: 400px;
+}
+
+.cards-container {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr); /* 5 cartas por fila */
+  gap: 20px;
+}
+
+.card {
+  border: 2px solid black;
+  border-radius: 8px;
+  padding: 10px;
+  text-align: center;
+}
+
+.card img {
+  width: 100%;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+.filters {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+  align-items: center;
+}
+
+.search-input {
+  flex: 1; /* que ocupe todo el espacio restante */
+  padding: 8px;
+  font-size: 16px;
+}
+
+.elixir-select {
+  padding: 8px;
+  font-size: 16px;
+}
