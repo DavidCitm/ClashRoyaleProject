@@ -18,12 +18,12 @@
 
 /* Logo a la izquierda absoluta */
 .header-logo {
-  height: 60px;               /* Más grande */
+  height: 50px;               /* Más grande */
   position: absolute;         /* Lo fijamos a la izquierda */
   left: 10px;                 /* Separación del borde izquierdo */
 }
 
 .header-title {
-  font-size: 40px;
+  font-size: 20px;
   font-weight: bold;
 }

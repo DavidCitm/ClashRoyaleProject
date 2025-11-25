@@ -11,7 +11,6 @@ export default function HomePage() {
   const [stats, setStats] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  const [search, setSearch] = useState("");
   const [searchTerm, setSearchTerm] = useState("");
   const [elixirFilter, setElixirFilter] = useState("");
 
@@ -88,5 +87,4 @@ export default function HomePage() {
       </div>
     </div>
   );
-
 }

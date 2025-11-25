@@ -13,7 +13,7 @@
 
 .cards-container {
   display: grid;
-  grid-template-columns: repeat(6, 1fr); /* 5 cartas por fila */
+  grid-template-columns: repeat(2, 1fr); /* 5 cartas por fila */
   gap: 20px;
 }
 
