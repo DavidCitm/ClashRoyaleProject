@@ -1,49 +1,57 @@
+/* HomePage.css */
+
 .homepage {
-  padding: 100px 20px; /* margen superior e inferior */
-  font-family: Arial, sans-serif;
-}
-
-.search-input {
-  margin-bottom: 20px;
-  padding: 8px;
-  font-size: 16px;
+  /* Espacio arriba para el Header y abajo para el Footer */
+  /* Ajusta estos valores según la altura real de tu Header/Footer */
+  padding: 20px 20px 40px 20px; 
   width: 100%;
-  max-width: 400px;
+  max-width: 600px;
+  margin: 0 auto;
 }
 
+/* --- Grid de 2 Columnas --- */
 .cards-container {
   display: grid;
-  grid-template-columns: repeat(2, 1fr); /* 5 cartas por fila */
-  gap: 20px;
+  grid-template-columns: 1fr 1fr; /* 2 columnas iguales */
+  gap: 15px; /* Espacio entre cartas */
 }
 
+/* --- Estilo de la Carta (Cuadrado Gris) --- */
+/* Esta clase la usa tu componente CardPersonaje */
 .card {
-  border: 2px solid black;
-  border-radius: 8px;
-  padding: 10px;
-  text-align: center;
+  background-color: #D9D9D9; /* Color Gris */
+  border-radius: 20px;       /* Bordes redondeados */
+  aspect-ratio: 1 / 1;       /* FUERZA QUE SEA UN CUADRADO PERFECTO */
+  
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  
+  color: #000; /* Texto negro */
+  font-weight: bold;
+  text-transform: uppercase;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.3);
 }
 
 .card img {
-  width: 100%;
-  height: auto;
-  margin-bottom: 10px;
+  max-width: 70%;
+  max-height: 70%;
+  object-fit: contain;
+  margin-bottom: 5px;
 }
 
+/* --- Estilos del buscador (opcional, para que se vea limpio) --- */
 .filters {
   display: flex;
   gap: 10px;
   margin-bottom: 20px;
-  align-items: center;
 }
 
-.search-input {
-  flex: 1; /* que ocupe todo el espacio restante */
-  padding: 8px;
-  font-size: 16px;
+.search-input, .elixir-select {
+  padding: 10px;
+  border-radius: 20px;
+  border: none;
+  outline: none;
 }
-
-.elixir-select {
-  padding: 8px;
-  font-size: 16px;
-}
+.search-input { flex: 1; }

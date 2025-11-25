@@ -1,22 +1,21 @@
-import {Routes, Route} from 'react-router-dom'; 
+// App.jsx
 import './App.css';
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import HomePage from './HomePage';
 
-
 function App() {
   return (
-    <>
+    <div className="app-layout">
       <Header />
-
-      {/* esto hay que hacer route */}
-      <HomePage /> 
-
-
       
+      {/* Renderizamos HomePage directamente */}
+      <main className="app-content">
+        <HomePage />
+      </main>
+
       <Footer />
-    </>
+    </div>
   )
 }
 

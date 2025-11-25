@@ -1,4 +1,11 @@
-.app {
-  margin-top: 80px;      /* Deja un poco de margen para que el body no quede debajo del header */
-  margin-bottom: 60px;   /* Altura del footer */
+/* App.css */
+.app-layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Ocupa toda la altura del móvil/pantalla */
+}
+
+.app-content {
+  flex: 1; /* Esto hace que el contenido se estire y empuje el footer abajo */
+  width: 100%;
 }
