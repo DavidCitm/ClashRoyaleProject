@@ -1,14 +1,28 @@
-import React from "react";
-import "./Header.css";
-import logo from "../assets/LogoClash.png"; // Ajusta la ruta de tu imagen
+import React from 'react';
+import './Header.css'; // Crearemos este archivo abajo
 
-const Header = () => {
+export default function Header() {
   return (
     <header className="header">
-      <img src={logo} alt="Logo" className="header-logo" />
-      <span className="header-title">Project Royale</span>
+      {/* Contenedor derecho alineado al final */}
+      <div className="header-stats">
+        
+        {/* Ícono de Estrella (Nivel) */}
+        <div className="stat-box star-box">
+          <span className="icon">⭐</span> {/* Puedes usar una imagen/svg aquí */}
+        </div>
+
+        {/* Ícono de Subida (Flecha) */}
+        <div className="stat-box upgrade-box">
+          <span className="icon">▲</span>
+        </div>
+
+        {/* Barra de progreso / Nombre */}
+        <div className="stat-bar">
+          <div className="bar-fill"></div>
+        </div>
+        
+      </div>
     </header>
   );
-};
-
-export default Header;
+}

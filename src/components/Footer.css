@@ -1,36 +1,39 @@
 .footer {
-  position: fixed;
-  bottom: 0;
-  left: 0;
   width: 100%;
-  height: 60px;                 /* Altura del footer */
-  background-color: #00b0fd;
+  height: 80px; /* Altura fija como una app */
+  background-color: #9c00ea; /* Morado vibrante eléctrico */
+  
+  /* Bordes redondeados solo arriba */
+  border-top-left-radius: 25px;
+  border-top-right-radius: 25px;
+  
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around; /* Iconos separados uniformemente */
   align-items: center;
-  padding: 0 10px;              /* Padding reducido para que no se salga el botón */
-  box-sizing: border-box;
-  z-index: 1000;
+  
+  position: sticky; /* O fixed si quieres que flote sobre el contenido */
+  bottom: 0;
+  box-shadow: 0 -4px 10px rgba(0,0,0,0.3);
+  z-index: 100;
 }
 
-.footer-left,
-.footer-center,
-.footer-right {
-  flex: 1;
-  display: flex;
-  justify-content: center;      /* Centra los botones dentro de cada zona */
-}
-
-.footer-left { justify-content: flex-start; }
-.footer-center { justify-content: center; }
-.footer-right { justify-content: flex-end; }
-
-.footer button {
-  background-color: white;
-  color: #00b0fd;
+.footer-btn {
+  background: none;
   border: none;
-  padding: 10px 15px;
-  border-radius: 5px;
-  max-width: 90%;               /* Evita que los botones se salgan de la pantalla */
-  box-sizing: border-box;
+  color: white; /* Iconos blancos */
+  font-size: 2rem; /* Tamaño grande de iconos */
+  cursor: pointer;
+  opacity: 0.6; /* Un poco transparentes si no están activos */
+  transition: opacity 0.2s, transform 0.2s;
+}
+
+.footer-btn:hover {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+.footer-btn.active {
+  opacity: 1; /* El activo se ve al 100% */
+  border-bottom: 3px solid white; /* Indicador opcional */
+  padding-bottom: 5px;
 }

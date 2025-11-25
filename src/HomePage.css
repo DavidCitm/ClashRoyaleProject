@@ -18,21 +18,28 @@
 
 /* --- Estilo de la Carta (Cuadrado Gris) --- */
 /* Esta clase la usa tu componente CardPersonaje */
+/* En HomePage.css */
+
 .card {
-  background-color: #D9D9D9; /* Color Gris */
-  border-radius: 20px;       /* Bordes redondeados */
-  aspect-ratio: 1 / 1;       /* FUERZA QUE SEA UN CUADRADO PERFECTO */
+  /* CAMBIO: De color plano a degradado suave morado/grisáceo */
+  background: linear-gradient(135deg, #eaddff 0%, #d0bcff 100%);
   
+  /* Mantenemos el resto igual */
+  border-radius: 20px;
+  aspect-ratio: 1 / 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  
-  color: #000; /* Texto negro */
+  color: #2a0055; /* Texto morado oscuro para que contraste bien */
   font-weight: bold;
   text-transform: uppercase;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2); /* Sombra un poco más marcada */
+  border: 1px solid rgba(255, 255, 255, 0.3); /* Un borde sutil brillante */
+  transition: transform 0.2s;
 }
+
+/* El resto de estilos (img, grid) se queda igual */
 
 .card img {
   max-width: 70%;
