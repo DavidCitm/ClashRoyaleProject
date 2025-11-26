@@ -1,6 +1,20 @@
 import { useEffect, useState } from "react";
 import CardPersonaje from "./components/CardPersonaje";
+<<<<<<< Updated upstream
 import "./HomePage.css";
+=======
+import './HomePage.css';
+
+// 🚀 CAMBIO 1: Importamos la imagen desde src/assets
+import ElixirIcon from './assets/elixir_drop.png'; 
+
+// Componente Wrapper para mostrar el icono en el select
+const ElixirIconContainer = ({ src, alt }) => (
+    <div className="elixir-icon-wrapper">
+        <img src={src} alt={alt} className="elixir-icon-img" />
+    </div>
+);
+>>>>>>> Stashed changes
 
 export default function HomePage() {
   const [arenas, setArenas] = useState([]);
@@ -71,6 +85,7 @@ export default function HomePage() {
           onChange={(e) => setSearchTerm(e.target.value)}
           className="search-input"
         />
+<<<<<<< Updated upstream
 
         <select
           value={elixirFilter}
@@ -84,6 +99,27 @@ export default function HomePage() {
             </option>
           ))}
         </select>
+=======
+  
+        <div className="elixir-select-container">
+            {/* 🚀 CAMBIO 2: Mostramos el icono fuera del select y lo superponemos */}
+            <ElixirIconContainer src={ElixirIcon} alt="Todos" />
+            
+            <select
+                value={elixirFilter}
+                onChange={(e) => setElixirFilter(e.target.value)}
+                className="elixir-select"
+            >
+                {/* Dejamos el texto para que el navegador sepa qué opción es */}
+                <option value="">Todos</option> 
+                {[...Array(11).keys()].map((num) => (
+                <option key={num} value={num}>
+                    {num} Elixir
+                </option>
+                ))}
+            </select>
+        </div>
+>>>>>>> Stashed changes
       </div>
 
       {/* Render de cartas */}
