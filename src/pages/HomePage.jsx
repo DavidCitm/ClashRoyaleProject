@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import CardPersonaje from "./components/CardPersonaje";
+import { Link } from "react-router-dom";
+import CardPersonaje from "../components/CardPersonaje";
 import "./HomePage.css";
 
 export default function HomePage() {
@@ -11,6 +12,7 @@ export default function HomePage() {
 
   const [searchTerm, setSearchTerm] = useState("");
   const [elixirFilter, setElixirFilter] = useState("");
+
 
   useEffect(() => {
     async function loadData() {
@@ -25,7 +27,7 @@ export default function HomePage() {
         
         // Fetch de la tabla en concreto, basicamente pilla la URL y la tabla que necesitamos "fetchear"
         const res = await fetch(API_URL + table, {
-          // 3.2 → Headers obligatorios para que Supabase deje acceder
+          // Headers obligatorios para que Supabase deje acceder
           headers: {
             apikey: API_KEY,                     // identifica la petición
             Authorization: `Bearer ${API_KEY}`   // autorización tipo "Bearer"
@@ -99,13 +101,24 @@ export default function HomePage() {
           )
           // Mostrar Cards
           .map((p) => (
-            <CardPersonaje
+            <Link
               key={p.id}
-              nombre={p.nombre}
-              imagen_url={p.imagen_url}
-              rareza={p.rareza}
-              coste_elixir={p.coste_elixir}
-            />
+              to={`/personaje/${p.id}`}
+              state={{ 
+                personaje: p,
+                stats: stats.filter(s => s.id_personaje === p.id) // solo los stats de este personaje
+              }}
+              style={{ textDecoration: "none" }}
+            >
+              <CardPersonaje
+                nombre={p.nombre}
+                imagen_url={p.imagen_url}
+                rareza={p.rareza}
+                coste_elixir={p.coste_elixir}
+              />
+            </Link>
+
+
           ))}
       </div>
     </div>

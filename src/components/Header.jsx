@@ -1,5 +1,6 @@
 import React from 'react';
-import './Header.css'; // Crearemos este archivo abajo
+import { Link } from "react-router-dom"; // Importamos Link
+import './Header.css';
 
 export default function Header() {
   return (
@@ -9,12 +10,14 @@ export default function Header() {
         
         {/* Ícono de Estrella (Nivel) */}
         <div className="stat-box star-box">
-          <span className="icon">⭐</span> {/* Puedes usar una imagen/svg aquí */}
+          <span className="icon">⭐</span>
         </div>
 
-        {/* Ícono de Subida (Flecha) */}
+        {/* Ícono de Subida (Flecha) → Ahora clickeable */}
         <div className="stat-box upgrade-box">
-          <span className="icon">▲</span>
+          <Link to="/">
+            <span className="icon">▲</span>
+          </Link>
         </div>
 
         {/* Barra de progreso / Nombre */}
