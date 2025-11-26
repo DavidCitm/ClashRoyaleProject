@@ -1,8 +1,8 @@
 /* HomePage.css */
 
 .homepage {
-  /* Padding lateral seguro para el iPhone XR */
-  padding: 10px 15px 80px 15px; 
+  /* Padding lateral reducido para evitar el desbordamiento en móviles */
+  padding: 10px 5px 80px 5px; 
   width: 100%;
   max-width: 600px;
   margin: 0 auto;
@@ -16,10 +16,8 @@ h1 {
   display: none; 
 }
 
-/* --- Buscador y Filtros (ARREGLO CRÍTICO DE LAYOUT) --- */
+/* --- Buscador y Filtros (Ajuste para Móvil) --- */
 .filters {
-  /* Padding interno para asegurar que el input y el select no toquen el borde */
-  padding: 0 5px; 
   display: flex;
   gap: 10px;
   margin-bottom: 30px;
@@ -27,10 +25,8 @@ h1 {
   min-width: 0; 
 }
 
-.search-input {
-  /* Aseguramos que pueda encogerse y crecer para usar el espacio disponible */
-  flex: 1 1 60%; 
-  min-width: 150px; 
+.search-input, 
+.elixir-select {
   padding: 12px 20px;
   border-radius: 25px;
   border: none;
@@ -39,77 +35,42 @@ h1 {
   box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 }
 
-/* ------------------------------------- */
-/* 🚀 ARREGLO CLAVE: Contenedor de Elixir */
-/* ------------------------------------- */
-
-.elixir-select-container {
-    position: relative;
-    /* Forzamos el tamaño fijo del contenedor para que no se estire */
-    width: 120px; 
-    height: 48px; 
-    border-radius: 25px;
-    background-color: white; 
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-    flex-shrink: 0; /* Evita que este elemento se encoja */
+.search-input {
+  flex: 1 1 50%; 
+  min-width: 0;
 }
 
-/* Estilo para la gota de elixir (la imagen) */
-.elixir-icon-wrapper {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    /* Centramos el icono a la izquierda */
-    justify-content: flex-start; 
-    align-items: center;
-    z-index: 1; 
-    padding-left: 15px; /* Espacio donde irá la gota */
-}
-
-.elixir-icon-img {
-    /* Forzamos el tamaño pequeño de la gota */
-    width: 24px; 
-    height: 24px;
-    object-fit: contain;
-}
-
-/* El select transparente debe cubrir el contenedor para ser clickeable */
 .elixir-select {
-    opacity: 0; 
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    z-index: 2;
-    /* Ocultamos la flecha nativa */
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
+  flex-shrink: 0; 
+  width: 100px; 
+  background-color: white;
+  cursor: pointer;
+  color: #333;
 }
 
-/* --- Grid de 3 Columnas (Ajuste para iPhone XR) --- */
+/* --- GRID BASE: 3 Columnas por defecto --- */
 .cards-container {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 8px; 
-  padding: 0 5px; 
+  grid-template-columns: 1fr 1fr 1fr; 
+  gap: 8px; /* Reducimos el gap para ganar espacio */
+  padding: 0 5px; /* Reducimos el padding simétrico */
 }
 
-/* --- Estilo de la Carta (Estabilizada) --- */
+/* --- Estilo de la Carta (Más Compacta) --- */
 .card {
   background: linear-gradient(135deg, #7e57c2 0%, #512da8 100%);
   color: #ffffff;
-  border-radius: 12px;
-  aspect-ratio: 1 / 1.5; 
+  border-radius: 10px; /* Bordes ligeramente más pequeños */
+  
+  /* Reducimos la proporción para que sean menos altas */
+  aspect-ratio: 1 / 1.35; 
+  
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  padding: 5px 3px 8px 3px;
+  justify-content: flex-start;
+  padding: 4px 2px; /* Reducimos el padding interno */
+  
   box-shadow: 0 4px 8px rgba(0,0,0,0.3);
   border: 1px solid rgba(255, 255, 255, 0.1); 
   transition: transform 0.2s;
@@ -119,45 +80,48 @@ h1 {
 
 /* Estilos para el contenido interno */
 .card img {
-  width: 65%;
+  width: 65%; /* Hacemos la imagen un poco más pequeña */
   height: auto;
-  margin-bottom: 5px; 
+  margin-bottom: 1px;
 }
-
 .card h2 { 
+    /* Si la fuente es muy grande/pequeña, puedes ajustar el tamaño aquí */
     font-size: 0.8rem;
-    font-weight: 900;
-    line-height: 1;
-    margin: 0;
+    margin: 0; 
     padding: 2px 0;
-    text-shadow: 0px 0px 4px rgba(255, 255, 255, 0.7), 0px 0px 2px rgba(0, 0, 0, 0.5);
-    font-family: 'ClashRegular', sans-serif;
+    line-height: 1;
 }
 
 .card .card-rareza, 
 .card .card-elixir { 
-    font-size: 0.7rem;
-    line-height: 1.1;
-    margin: 0;
+    margin: 0; 
+    font-size: 0.6rem; 
+    line-height: 1.1; 
+    text-align: center;
     padding: 0;
-    text-shadow: 0px 0px 3px rgba(255, 255, 255, 0.6);
-    font-family: 'ClashRegular', sans-serif;
 }
 
 /* ========================================= */
-/* 📱 MEDIA QUERY (Solo como respaldo para móviles extremadamente estrechos) */
+/* 📱 MEDIA QUERY: Hacemos la app responsive */
 /* ========================================= */
-@media (max-width: 350px) {
-    /* En móviles muy pequeños, pasamos a 2 columnas */
+
+@media (max-width: 400px) {
+    /* Si la pantalla es menor a 400px (móviles muy estrechos) */
+    
     .cards-container {
+        /* CAMBIO CLAVE: Pasamos a 2 columnas para que tengan más espacio */
         grid-template-columns: 1fr 1fr;
-        gap: 12px;
-        padding: 0 10px;
+        gap: 15px; /* Aumentamos el gap para que respiren */
+        padding: 0 15px;
     }
+
     .card {
-        aspect-ratio: 1 / 1.3;
+        /* Les damos más espacio vertical y horizontal */
+        aspect-ratio: 1 / 1.15;
+        padding: 8px;
     }
+    
     .card h2 {
-        font-size: 0.9rem;
+        font-size: 1rem;
     }
 }
