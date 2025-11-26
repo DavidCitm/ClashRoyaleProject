@@ -16,12 +16,12 @@ export default function App() {
       <main>
         
         <BrowserRouter>
-        <Header />
+          <Header />
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/personaje/:id" element={<CardDetail />} />
           </Routes>
-          <Footer/>
+          <Footer />
         </BrowserRouter>
         
       </main>
