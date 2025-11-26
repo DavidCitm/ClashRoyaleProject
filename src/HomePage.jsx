@@ -1,8 +1,6 @@
 import { useEffect, useState } from "react";
-import { supabase } from "./supabaseClient";
 import CardPersonaje from "./components/CardPersonaje";
-import './HomePage.css';
-
+import "./HomePage.css";
 
 export default function HomePage() {
   const [arenas, setArenas] = useState([]);
@@ -14,25 +12,47 @@ export default function HomePage() {
   const [searchTerm, setSearchTerm] = useState("");
   const [elixirFilter, setElixirFilter] = useState("");
 
-
-
   useEffect(() => {
     async function loadData() {
       setLoading(true);
 
-      const { data: arenasData } = await supabase.from("arenas").select("*");
-      const { data: nivelesData } = await supabase.from("niveles").select("*");
-      const { data: personajesData } = await supabase.from("personajes").select("*");
-      const { data: statsData } = await supabase.from("personaje_stats").select("*");
+      // URL y Key de la API en Supabase
+      const API_URL = "https://yrpaahgwlhuvwsvgzdau.supabase.co/rest/v1/";
+      const API_KEY = "sb_publishable_D0iDnQVwzQt1_XzxDIkbmw_80jfFsMU";
 
+      // Función reutilizable para pedir cualquier tabla
+      async function fetchTable(table) {
+        
+        // Fetch de la tabla en concreto, basicamente pilla la URL y la tabla que necesitamos "fetchear"
+        const res = await fetch(API_URL + table, {
+          // 3.2 → Headers obligatorios para que Supabase deje acceder
+          headers: {
+            apikey: API_KEY,                     // identifica la petición
+            Authorization: `Bearer ${API_KEY}`   // autorización tipo "Bearer"
+          }
+        });
+
+        // Convertimos la respuesta a JSON
+        return res.json();
+      }
+
+      // Llamamos a cada tabla usando la función del fetch
+      const arenasData = await fetchTable("arenas");
+      const nivelesData = await fetchTable("niveles");
+      const personajesData = await fetchTable("personajes");
+      const statsData = await fetchTable("personaje_stats");
+
+      //Guardamos todo en estado
       setArenas(arenasData);
       setNiveles(nivelesData);
       setPersonajes(personajesData);
       setStats(statsData);
 
+      // Para mirar cuando termina de cargar
       setLoading(false);
     }
 
+    //Carga
     loadData();
   }, []);
 
@@ -41,8 +61,8 @@ export default function HomePage() {
   return (
     <div className="homepage">
       <h1>Cartas</h1>
-  
-      {/* Buscador + Filtro Elixir */}
+
+      {/* Buscador + Filtro */}
       <div className="filters">
         <input
           type="text"
@@ -51,7 +71,7 @@ export default function HomePage() {
           onChange={(e) => setSearchTerm(e.target.value)}
           className="search-input"
         />
-  
+
         <select
           value={elixirFilter}
           onChange={(e) => setElixirFilter(e.target.value)}
@@ -65,16 +85,19 @@ export default function HomePage() {
           ))}
         </select>
       </div>
-        
-      {/* Cartas filtradas */}
+
+      {/* Render de cartas */}
       <div className="cards-container">
         {personajes
+          // Filtrar por nombre
           .filter((p) =>
             p.nombre.toLowerCase().includes(searchTerm.toLowerCase())
           )
+          // Filtrar por coste de elixir
           .filter((p) =>
             elixirFilter === "" ? true : p.coste_elixir === Number(elixirFilter)
           )
+          // Mostrar Cards
           .map((p) => (
             <CardPersonaje
               key={p.id}
