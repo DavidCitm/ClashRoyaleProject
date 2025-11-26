@@ -14,9 +14,6 @@ const ElixirIconContainer = ({ src, alt }) => (
         <img src={src} alt={alt} className="elixir-icon-img" />
     </div>
 );
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
 >>>>>>> Stashed changes
 
 export default function HomePage() {
@@ -89,7 +86,6 @@ export default function HomePage() {
           className="search-input"
         />
 <<<<<<< Updated upstream
-<<<<<<< Updated upstream
 
         <select
           value={elixirFilter}
@@ -104,8 +100,6 @@ export default function HomePage() {
           ))}
         </select>
 =======
-=======
->>>>>>> Stashed changes
   
         <div className="elixir-select-container">
             {/* 🚀 CAMBIO 2: Mostramos el icono fuera del select y lo superponemos */}
@@ -125,9 +119,6 @@ export default function HomePage() {
                 ))}
             </select>
         </div>
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
 >>>>>>> Stashed changes
       </div>
 
