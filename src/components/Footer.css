@@ -1,39 +1,60 @@
+
+/* components/Footer.css */
+
 .footer {
   width: 100%;
-  height: 80px; /* Altura fija como una app */
-  background-color: #9c00ea; /* Morado vibrante eléctrico */
+  /* CAMBIO: Reducimos la altura para que sea más compacto */
+  height: 65px; 
+  background-color: #6200ea;
   
-  /* Bordes redondeados solo arriba */
+  /* Bordes redondeados superiores */
   border-top-left-radius: 25px;
   border-top-right-radius: 25px;
   
   display: flex;
-  justify-content: space-around; /* Iconos separados uniformemente */
+  justify-content: space-around;
   align-items: center;
   
-  position: sticky; /* O fixed si quieres que flote sobre el contenido */
+  /* Mantenemos 'sticky' o 'fixed' para que quede en el fondo */
+  position: fixed; /* CAMBIO: Usamos 'fixed' para que flote sobre el contenido si es necesario */
   bottom: 0;
   box-shadow: 0 -4px 10px rgba(0,0,0,0.3);
   z-index: 100;
+  padding-bottom: 0px; /* Quitamos el padding inferior que teníamos */
 }
 
 .footer-btn {
   background: none;
   border: none;
-  color: white; /* Iconos blancos */
-  font-size: 2rem; /* Tamaño grande de iconos */
   cursor: pointer;
-  opacity: 0.6; /* Un poco transparentes si no están activos */
+  opacity: 0.5;
   transition: opacity 0.2s, transform 0.2s;
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px; /* Reducimos el padding del botón */
 }
 
-.footer-btn:hover {
-  opacity: 1;
-  transform: scale(1.1);
+/* El tamaño de la imagen debe ser más pequeño si hemos reducido la altura */
+.footer-icon-img {
+  width: 30px; /* CAMBIO: Reducimos el ancho de los iconos */
+  height: 30px; /* CAMBIO: Reducimos la altura de los iconos */
+  object-fit: contain;
+  filter: drop-shadow(0 2px 2px rgba(0,0,0,0.2));
 }
 
 .footer-btn.active {
-  opacity: 1; /* El activo se ve al 100% */
-  border-bottom: 3px solid white; /* Indicador opcional */
-  padding-bottom: 5px;
+  opacity: 1;
+  /* La línea blanca debajo del botón activo */
+  border-bottom: 3px solid white;
+  padding-bottom: 2px; /* Ajustamos el padding para que la línea quede bien */
+  border-radius: 2px;
+}
+
+
+/* Hover: al pasar el ratón */
+.footer-btn:hover {
+  opacity: 0.8;
+  transform: scale(1.1);
 }

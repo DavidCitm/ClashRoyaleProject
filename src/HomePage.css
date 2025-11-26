@@ -1,64 +1,127 @@
 /* HomePage.css */
 
 .homepage {
-  /* Espacio arriba para el Header y abajo para el Footer */
-  /* Ajusta estos valores según la altura real de tu Header/Footer */
-  padding: 20px 20px 40px 20px; 
+  /* Padding lateral reducido para evitar el desbordamiento en móviles */
+  padding: 10px 5px 80px 5px; 
   width: 100%;
   max-width: 600px;
   margin: 0 auto;
 }
 
-/* --- Grid de 2 Columnas --- */
-.cards-container {
-  display: grid;
-  grid-template-columns: 1fr 1fr; /* 2 columnas iguales */
-  gap: 15px; /* Espacio entre cartas */
+/* Ocultar título si no lo quieres */
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+  display: none; 
 }
 
-/* --- Estilo de la Carta (Cuadrado Gris) --- */
-/* Esta clase la usa tu componente CardPersonaje */
-/* En HomePage.css */
-
-.card {
-  /* CAMBIO: De color plano a degradado suave morado/grisáceo */
-  background: linear-gradient(135deg, #eaddff 0%, #d0bcff 100%);
-  
-  /* Mantenemos el resto igual */
-  border-radius: 20px;
-  aspect-ratio: 1 / 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  color: #2a0055; /* Texto morado oscuro para que contraste bien */
-  font-weight: bold;
-  text-transform: uppercase;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2); /* Sombra un poco más marcada */
-  border: 1px solid rgba(255, 255, 255, 0.3); /* Un borde sutil brillante */
-  transition: transform 0.2s;
-}
-
-/* El resto de estilos (img, grid) se queda igual */
-
-.card img {
-  max-width: 70%;
-  max-height: 70%;
-  object-fit: contain;
-  margin-bottom: 5px;
-}
-
-/* --- Estilos del buscador (opcional, para que se vea limpio) --- */
+/* --- Buscador y Filtros (Ajuste para Móvil) --- */
 .filters {
   display: flex;
   gap: 10px;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
+  align-items: center;
+  min-width: 0; 
 }
 
-.search-input, .elixir-select {
-  padding: 10px;
-  border-radius: 20px;
+.search-input, 
+.elixir-select {
+  padding: 12px 20px;
+  border-radius: 25px;
   border: none;
   outline: none;
+  font-size: 14px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 }
-.search-input { flex: 1; }
+
+.search-input {
+  flex: 1 1 50%; 
+  min-width: 0;
+}
+
+.elixir-select {
+  flex-shrink: 0; 
+  width: 100px; 
+  background-color: white;
+  cursor: pointer;
+  color: #333;
+}
+
+/* --- GRID BASE: 3 Columnas por defecto --- */
+.cards-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr; 
+  gap: 8px; /* Reducimos el gap para ganar espacio */
+  padding: 0 5px; /* Reducimos el padding simétrico */
+}
+
+/* --- Estilo de la Carta (Más Compacta) --- */
+.card {
+  background: linear-gradient(135deg, #7e57c2 0%, #512da8 100%);
+  color: #ffffff;
+  border-radius: 10px; /* Bordes ligeramente más pequeños */
+  
+  /* Reducimos la proporción para que sean menos altas */
+  aspect-ratio: 1 / 1.35; 
+  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 4px 2px; /* Reducimos el padding interno */
+  
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  border: 1px solid rgba(255, 255, 255, 0.1); 
+  transition: transform 0.2s;
+  cursor: pointer;
+  font-family: 'ClashRegular', sans-serif;
+}
+
+/* Estilos para el contenido interno */
+.card img {
+  width: 65%; /* Hacemos la imagen un poco más pequeña */
+  height: auto;
+  margin-bottom: 1px;
+}
+.card h2 { 
+    /* Si la fuente es muy grande/pequeña, puedes ajustar el tamaño aquí */
+    font-size: 0.8rem;
+    margin: 0; 
+    padding: 2px 0;
+    line-height: 1;
+}
+
+.card .card-rareza, 
+.card .card-elixir { 
+    margin: 0; 
+    font-size: 0.6rem; 
+    line-height: 1.1; 
+    text-align: center;
+    padding: 0;
+}
+
+/* ========================================= */
+/* 📱 MEDIA QUERY: Hacemos la app responsive */
+/* ========================================= */
+
+@media (max-width: 400px) {
+    /* Si la pantalla es menor a 400px (móviles muy estrechos) */
+    
+    .cards-container {
+        /* CAMBIO CLAVE: Pasamos a 2 columnas para que tengan más espacio */
+        grid-template-columns: 1fr 1fr;
+        gap: 15px; /* Aumentamos el gap para que respiren */
+        padding: 0 15px;
+    }
+
+    .card {
+        /* Les damos más espacio vertical y horizontal */
+        aspect-ratio: 1 / 1.15;
+        padding: 8px;
+    }
+    
+    .card h2 {
+        font-size: 1rem;
+    }
+}

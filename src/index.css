@@ -1,20 +1,34 @@
 /* index.css */
+@font-face {
+  /* Nombre que usarás en el resto de tu CSS (ej: font-family: 'MiAppFont';) */
+  font-family: 'ClashRegular'; 
+  
+  /* Indica la ruta al archivo (ajusta el nombre si es diferente) */
+  src: url('./fonts/Clash_Regular.otf') format('opentype'); 
+  
+  /* Peso y estilo por defecto */
+  font-weight: 400;
+  font-style: normal;
+}
+
 :root {
   font-family: Arial, sans-serif;
   line-height: 1.5;
 }
 
-/* Eliminamos márgenes y ponemos el degradado en toda la pantalla */
 html, body {
   margin: 0;
   padding: 0;
   width: 100%;
   min-height: 100vh;
-  background: linear-gradient(180deg, #3b0075 0%, #180029 100%); /* Morado */
-  background-attachment: fixed; /* El fondo no se mueve al hacer scroll */
+  background: linear-gradient(180deg, #3b0075 0%, #180029 100%); 
+  background-attachment: fixed;
   color: white;
+   font-family: 'ClashRegular', Arial, sans-serif;
+  /* Arreglo Crítico: Ocultamos desbordamiento horizontal globalmente */
+  overflow-x: hidden; 
 }
 
 * {
-  box-sizing: border-box;
+  box-sizing: border-box; /* Aseguramos que padding no sume ancho */
 }

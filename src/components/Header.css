@@ -1,11 +1,14 @@
+/* components/Header.css */
 .header {
   width: 100%;
   padding: 15px 20px;
   display: flex;
-  justify-content: flex-end; /* Alinea todo a la derecha */
+  justify-content: flex-end; 
   align-items: center;
-  /* Fondo transparente para que se vea el degradado de la App */
   background-color: transparent; 
+  
+  /* Agregamos una altura fija para que el contenido de HomePage sepa dónde empezar. */
+  height: 60px; /* O ajusta este valor a la altura real de tus iconos */
 }
 
 .header-stats {

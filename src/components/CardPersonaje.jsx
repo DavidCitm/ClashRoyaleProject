@@ -1,23 +1,21 @@
 export default function CardPersonaje({ nombre, imagen_url, rareza, coste_elixir }) {
   return (
-    <div
-      style={{
-        background: "#e7cbe9ff",
-        borderRadius: "12px",
-        padding: "10px",
-        textAlign: "center",
-        boxShadow: "0px 2px 8px rgba(0,0,0,0.15)",
-        border: "2px solid black"   
-      }}
-    >
+    // CAMBIO CLAVE: Usamos className="card" y eliminamos el atributo style
+    <div className="card"> 
+      
       <img 
         src={imagen_url} 
         alt={nombre} 
-        style={{ width: "80%", borderRadius: "8px" }}
+        // Eliminamos el style en línea de la imagen
       />
-      <h3>{nombre}</h3>
-      <p>Rareza: {rareza}</p>
-      <p>Elixir: {coste_elixir}</p>
+      
+      {/* Usamos h2 en lugar de h3 para que coincida con el CSS de compactación que definimos */}
+      <h2>{nombre}</h2> 
+      
+      {/* Añadimos clases a la información para poder controlarlas mejor */}
+      <p className="card-rareza">Rareza: {rareza}</p>
+      <p className="card-elixir">Elixir: {coste_elixir}</p>
+      
     </div>
   );
 }
