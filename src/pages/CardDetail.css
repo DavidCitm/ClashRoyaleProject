@@ -1,0 +1,96 @@
+/* Fondo general con degradado */
+.detail-container {
+  min-height: 100vh;
+  width: 100%;
+  background: linear-gradient(180deg, #3b0077, #8a2be2);
+  display: flex;
+  justify-content: center;
+  padding: 2rem;
+}
+
+/* Panel principal */
+.card-panel {
+  width: 100%;
+  max-width: 500px;
+  background:  #7952BF; ;
+  padding: 2.5rem;
+  border-radius: 25px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.30);
+  text-align: center;
+}
+
+/* Imagen personaje */
+.character-image {
+  width: 180px;
+  border-radius: 12px;
+  display: block;
+  margin: 0 auto;
+}
+
+/* Título principal */
+.title {
+  font-size: 2.2rem;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+  color: #222;
+  font-weight: 800;
+  text-shadow: 0 2px 3px rgba(0,0,0,0.2);
+}
+
+/* Info básica */
+.info {
+  font-size: 1.1rem;
+  color: #333;
+  font-weight: 600;
+}
+
+/* Título Stats */
+.stats-title {
+  margin-top: 2rem;
+  font-size: 1.7rem;
+  font-weight: 800;
+  color: #1d1d1d;
+  text-shadow: 0 2px 3px rgba(0,0,0,0.2);
+}
+
+/* Lista de stats */
+.stats-list {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+/* Cada tarjeta */
+.stat-card {
+  background: #e3ecff;
+  border: 2px solid #b8c4ff;
+  border-radius: 18px;
+  padding: 1.3rem;
+  text-align: left;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  color: #222;
+}
+
+/* Nivel */
+.stat-card h3 {
+  margin: 0 0 0.7rem 0;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #111;
+}
+
+/* Texto dentro de cada stat */
+.stat-card p {
+  margin: 0.4rem 0;
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: #222;
+}
+
+/* Cuando no hay datos */
+.no-data {
+  color: #fff;
+  font-size: 1.2rem;
+  font-weight: 700;
+}

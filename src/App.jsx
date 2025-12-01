@@ -20,6 +20,7 @@ export default function App() {
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/personaje/:id" element={<CardDetail />} />
+            
           </Routes>
           <Footer />
         </BrowserRouter>

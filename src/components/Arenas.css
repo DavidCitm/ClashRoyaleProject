@@ -1,0 +1,54 @@
+/* Fondo */
+.arenas-container {
+  min-height: 100vh;
+  padding: 2rem;
+  background: linear-gradient(180deg, #3b0077, #8a2be2);
+  color: white;
+  overflow-y: auto;
+}
+
+/* Título principal */
+.arenas-title {
+  text-align: center;
+  font-size: 2.2rem;
+  font-weight: 800;
+  margin-bottom: 2rem;
+  text-shadow: 0 3px 6px rgba(0,0,0,0.4);
+}
+
+/* Lista scrolleable */
+.arenas-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Card */
+.arena-card {
+  background: #ffffff10;
+  border: 2px solid #ffffff40;
+  padding: 1.3rem;
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+  backdrop-filter: blur(10px);
+  transition: transform 0.15s ease;
+}
+
+.arena-card:hover {
+  transform: scale(1.03);
+}
+
+/* Nombre arena */
+.arena-name {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+/* Copas */
+.arena-copas {
+  margin-top: 0.6rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #ffe9ff;
+}

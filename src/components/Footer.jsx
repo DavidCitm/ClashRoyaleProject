@@ -22,8 +22,11 @@ export default function Footer() {
       </button>
       
       {/* Botón 3: Batalla/Estadio */}
-      <button className="footer-btn">
-        <img src={imgBatalla} alt="Batalla" className="footer-icon-img" />
+       <button
+        className="footer-btn"
+        onClick={() => navigate("/arenas")}
+      >
+        <img src={imgBatalla} alt="Arenas" className="footer-icon-img" />
       </button>
 
     </footer>
