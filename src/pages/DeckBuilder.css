@@ -5,6 +5,11 @@
   --card-bg: #efe6ff;
   --accent: #ffd66b;
   --text-dark: #0f1724;
+
+  /* Tamaños de thumbnails */
+  --thumb-slot-size: 50px;
+  --thumb-picker-size: 44px;
+  --thumb-font-size: 0.75rem;
 }
 
 /* Página */
@@ -82,9 +87,7 @@
 }
 
 /* Cada slot */
-.slot-wrap {
-  position: relative;
-}
+.slot-wrap { position: relative; }
 .slot {
   width: 100%;
   height: 120px;
@@ -114,10 +117,34 @@
   border-style: solid;
 }
 
-/* thumb dentro del slot */
-.slot-thumb { width: 68px; height: 68px; border-radius: 10px; overflow: hidden; display:flex; align-items:center; justify-content:center; background:rgba(255,255,255,0.06); }
-.thumb-img { width:100%; height:100%; object-fit:cover; display:block; }
-.thumb-fallback { width:100%; height:100%; display:flex; align-items:center; justify-content:center; background: linear-gradient(180deg,#fff9e6,#ffd66b); color: #311e00; font-weight:800; font-size:1rem; }
+/* Thumb dentro del slot */
+.slot-thumb {
+  width: var(--thumb-slot-size);
+  height: var(--thumb-slot-size);
+  border-radius: 10px;
+  overflow: hidden;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background: rgba(255,255,255,0.06);
+}
+.slot-thumb img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  display:block;
+}
+.thumb-fallback {
+  width: 100%;
+  height: 100%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background: linear-gradient(180deg,#fff9e6,#ffd66b);
+  color: #311e00;
+  font-weight:800;
+  font-size: var(--thumb-font-size);
+}
 
 /* meta */
 .slot-meta { color: white; display:flex; flex-direction:column; gap:4px; }
@@ -215,7 +242,23 @@
 .card-row:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(0,0,0,0.12); }
 
 /* thumb pequeño */
-.card-thumb-small { width:56px; height:56px; border-radius:8px; display:flex; align-items:center; justify-content:center; background:#efe6ff; color:#4a2d7c; font-weight:800; }
+.card-thumb-small {
+  width: var(--thumb-picker-size);
+  height: var(--thumb-picker-size);
+  border-radius:8px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:#efe6ff;
+  color:#4a2d7c;
+  font-weight:800;
+  font-size: var(--thumb-font-size);
+}
+.card-thumb-small img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
 
 /* info */
 .card-info { display:flex; flex-direction:column; gap:2px; }

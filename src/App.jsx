@@ -7,13 +7,14 @@ import Arenas from "./pages/Arenas";
 import DeckBuilder from "./pages/DeckBuilder";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
+import DataProvider from "./context/DataContext";
+
 export default function App() {
   return (
     <BrowserRouter>
-      <div className="app-layout">
-
+      <DataProvider>
+        <div className="app-layout">
         <Header />
-
         <main>
           <Routes>
             <Route path="/" element={<HomePage />} />
@@ -22,10 +23,9 @@ export default function App() {
             <Route path="/mazo" element={<DeckBuilder />} />
           </Routes>
         </main>
-
         <Footer />
-
-      </div>
+        </div>
+      </DataProvider>
     </BrowserRouter>
   );
 }

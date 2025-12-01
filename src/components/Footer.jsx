@@ -14,10 +14,14 @@ export default function Footer() {
     <footer className="footer">
       
       {/* Botón 1: Cartas */}
-      <button className="footer-btn active">
+      <button
+        className="footer-btn active"
+        onClick={() => navigate("/")}
+      >
         <img src={imgCartas} alt="Cartas" className="footer-icon-img" />
       </button>
 
+      {/* Botón 2: Mazo */}
       <button className="footer-btn" onClick={() => navigate("/mazo")}>
         <img src={imgMazo} alt="Mazo" className="footer-icon-img" />
       </button>
@@ -33,3 +37,4 @@ export default function Footer() {
     </footer>
   );
 }
+
