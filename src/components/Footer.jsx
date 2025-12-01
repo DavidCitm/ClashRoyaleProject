@@ -18,8 +18,7 @@ export default function Footer() {
         <img src={imgCartas} alt="Cartas" className="footer-icon-img" />
       </button>
 
-      {/* Botón 2: Mazo */}
-      <button className="footer-btn">
+      <button className="footer-btn" onClick={() => navigate("/mazo")}>
         <img src={imgMazo} alt="Mazo" className="footer-icon-img" />
       </button>
 
