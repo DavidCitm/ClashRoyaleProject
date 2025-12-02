@@ -1,22 +1,39 @@
-import { useState, useEffect, useContext } from "react";
-import { DataContext } from "../context/DataContext";
+import { useState, useEffect } from "react";
+import { fetchTable } from "../pages/supabase";
 import "./DeckBuilder.css";
 
 const STORAGE_KEY = "deck_builder_saved_deck_v1";
 
-// Para mostrar la imagen de la carta
+// Mini componente para mostrar miniatura de una carta
 function CardThumb({ card }) {
   if (!card) return null;
   return <img src={card.image_url} alt={card.nombre} className="thumb-img" />;
 }
 
 export default function DeckBuilder() {
-  const { personajes, loading } = useContext(DataContext); // DatosContext
-  const [deck, setDeck] = useState(Array(8).fill(null)); // El mazo actual (8 slots)
-  const [openSlot, setOpenSlot] = useState(null); // Slot abierto para seleccionar carta
-  const [filter, setFilter] = useState(""); // Filtro de busqueda
+  const [personajes, setPersonajes] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-  // Cargar deck guardado en localStorage al montar
+  const [deck, setDeck] = useState(Array(8).fill(null)); // 8 slots
+  const [openSlot, setOpenSlot] = useState(null); // Slot que está abriendo el selector
+  const [filter, setFilter] = useState("");
+
+  // ────────────────────────────────────────────
+  // Cargar personajes desde Supabase
+  // ────────────────────────────────────────────
+  useEffect(() => {
+    async function load() {
+      setLoading(true);
+      const data = await fetchTable("personajes");
+      setPersonajes(data);
+      setLoading(false);
+    }
+    load();
+  }, []);
+
+  // ────────────────────────────────────────────
+  // Cargar el mazo desde localStorage
+  // ────────────────────────────────────────────
   useEffect(() => {
     const raw = localStorage.getItem(STORAGE_KEY);
     if (raw) {
@@ -27,15 +44,18 @@ export default function DeckBuilder() {
     }
   }, []);
 
-  // Guardar automáticamente deck en localStorage al cambiar
+  // Guardar en localStorage cuando cambie
   useEffect(() => {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(deck));
   }, [deck]);
 
+  // ────────────────────────────────────────────
+  // Si los datos están cargando
+  // ────────────────────────────────────────────
   if (loading) return <p>Cargando cartas...</p>;
 
-  // Transformar personajes a formato de carta usado en DeckBuilder
-  const cards = personajes.map(p => ({
+  // Transformar personajes al formato usado por el constructor
+  const cards = personajes.map((p) => ({
     id: p.id,
     nombre: p.nombre,
     elixir: p.coste_elixir,
@@ -43,41 +63,38 @@ export default function DeckBuilder() {
   }));
 
   // Aplicar filtro de búsqueda
-  const filtered = cards.filter(c =>
-    c.nombre.toLowerCase().includes(filter.trim().toLowerCase())
+  const filtered = cards.filter((c) =>
+    c.nombre.toLowerCase().includes(filter.toLowerCase())
   );
 
-  // Abrir panel de selección de carta
-  const openPicker = index => {
+  // ────────────────────────────────────────────
+  // Acciones del deck
+  // ────────────────────────────────────────────
+  const openPicker = (index) => {
     setOpenSlot(index);
-    setFilter(""); // reset filtro al abrir
+    setFilter("");
   };
 
-  // Cerrar panel
   const closePicker = () => setOpenSlot(null);
 
-  // Elegir carta para un slot
-  const chooseCard = card => {
-    const newDeck = deck.slice();
+  const chooseCard = (card) => {
+    const newDeck = [...deck];
     newDeck[openSlot] = card;
     setDeck(newDeck);
     closePicker();
   };
 
-  // Quitar carta de un slot
-  const removeCard = index => {
-    const newDeck = deck.slice();
+  const removeCard = (index) => {
+    const newDeck = [...deck];
     newDeck[index] = null;
     setDeck(newDeck);
   };
 
-  // Limpiar todo el deck
   const clearDeck = () => {
     setDeck(Array(8).fill(null));
     localStorage.removeItem(STORAGE_KEY);
   };
 
-  // Calcular elixir promedio del deck
   const averageElixir = () => {
     const used = deck.filter(Boolean);
     if (used.length === 0) return 0;
@@ -85,19 +102,22 @@ export default function DeckBuilder() {
     return (sum / used.length).toFixed(2);
   };
 
+  // ────────────────────────────────────────────
+  // Render
+  // ────────────────────────────────────────────
   return (
     <div className="deck-page">
       <div className="deck-panel">
-        {/* Header con título y meta información */}
+        {/* Header */}
         <header className="deck-header">
           <h1>Creador de mazos</h1>
+
           <div className="deck-meta">
-            {/* Burbuja de elixir promedio */}
             <div className="elixir-bubble">
               <strong>{averageElixir()}</strong>
               <span>Avg Elixir</span>
             </div>
-            {/* Botones limpiar/guardar */}
+
             <div className="deck-actions">
               <button className="btn btn-clear" onClick={clearDeck}>Limpiar</button>
               <button
@@ -113,7 +133,7 @@ export default function DeckBuilder() {
           </div>
         </header>
 
-        {/* Grid de slots del deck */}
+        {/* Grid de 8 slots */}
         <section className="slots-grid">
           {deck.map((card, i) => (
             <div className="slot-wrap" key={i}>
@@ -126,6 +146,7 @@ export default function DeckBuilder() {
                     <div className="slot-thumb">
                       <CardThumb card={card} />
                     </div>
+
                     <div className="slot-meta">
                       <div className="slot-name">{card.nombre}</div>
                       <div className="slot-elixir">{card.elixir}</div>
@@ -136,9 +157,11 @@ export default function DeckBuilder() {
                 )}
               </button>
 
-              {/* Botón quitar carta */}
+              {/* Botón de eliminar carta */}
               {card && (
-                <button className="remove-btn" onClick={() => removeCard(i)}>✕</button>
+                <button className="remove-btn" onClick={() => removeCard(i)}>
+                  ✕
+                </button>
               )}
 
               <div className="slot-index">#{i + 1}</div>
@@ -147,24 +170,24 @@ export default function DeckBuilder() {
         </section>
       </div>
 
-      {/* Picker modal para seleccionar carta */}
+      {/* Selector de cartas (modal) */}
       {openSlot !== null && (
         <div className="picker-overlay" onMouseDown={closePicker}>
-          <div className="picker-panel" onMouseDown={e => e.stopPropagation()}>
+          <div className="picker-panel" onMouseDown={(e) => e.stopPropagation()}>
             <div className="picker-header">
               <h2>Selecciona una carta</h2>
               <button className="btn btn-close" onClick={closePicker}>Cerrar</button>
             </div>
 
-            {/* Controles de búsqueda y slot */}
             <div className="picker-controls">
               <input
                 value={filter}
-                onChange={e => setFilter(e.target.value)}
+                onChange={(e) => setFilter(e.target.value)}
                 placeholder="Filtrar por nombre..."
                 className="picker-search"
                 autoFocus
               />
+
               <div className="picker-info">Slot: {openSlot + 1}</div>
             </div>
 
@@ -173,11 +196,16 @@ export default function DeckBuilder() {
               {filtered.length === 0 ? (
                 <div className="no-results">No hay cartas que coincidan</div>
               ) : (
-                filtered.map(c => (
-                  <button key={c.id} className="card-row" onClick={() => chooseCard(c)}>
+                filtered.map((c) => (
+                  <button
+                    key={c.id}
+                    className="card-row"
+                    onClick={() => chooseCard(c)}
+                  >
                     <div className="card-thumb-small">
                       <img src={c.image_url} alt={c.nombre} />
                     </div>
+
                     <div className="card-info">
                       <div className="card-name">{c.nombre}</div>
                       <div className="card-elixir">Elixir {c.elixir}</div>

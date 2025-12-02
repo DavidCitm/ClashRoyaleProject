@@ -37,7 +37,7 @@ export default function DataProvider({ children }) {
         fetchTable("arenas"),
         fetchTable("personajes"),
         fetchTable("personaje_stats"),
-      ]);
+      ]); 
 
       // Guardamos los datos en estados
       setArenas(arenasData);
