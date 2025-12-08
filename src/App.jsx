@@ -4,15 +4,13 @@ import Footer from "./components/Footer";
 import HomePage from './pages/HomePage';
 import CardDetail from "./pages/CardDetail";
 import Arenas from "./pages/Arenas";
+import FavoritesPage from "./pages/FavoritesPage";
 import DeckBuilder from "./pages/DeckBuilder";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-
-import DataProvider from "./context/DataContext";
 
 export default function App() {
   return (
     <BrowserRouter>
-      <DataProvider>
         <div className="app-layout">
         <Header />
         <main>
@@ -21,11 +19,11 @@ export default function App() {
             <Route path="/personaje/:id" element={<CardDetail />} />
             <Route path="/arenas" element={<Arenas />} />
             <Route path="/mazo" element={<DeckBuilder />} />
+            <Route path="/favorits" element={<FavoritesPage />} />
           </Routes>
         </main>
         <Footer />
         </div>
-      </DataProvider>
     </BrowserRouter>
   );
 }

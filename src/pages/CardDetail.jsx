@@ -2,6 +2,8 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { fetchById } from "../pages/supabase";
 import "./CardDetail.css";
+import { useFavorites } from '../context/FavoritesContext';
+
 
 export default function CardDetail() {
   const { id } = useParams();
@@ -28,6 +30,10 @@ export default function CardDetail() {
     load();
   }, [id]);
 
+
+  const { toggleFavorite, isFavorite } = useFavorites();
+
+
   if (loading) return <p>Cargando datos...</p>;
   if (!personaje) return <p>No hay datos del personaje.</p>;
 
@@ -41,6 +47,13 @@ export default function CardDetail() {
         />
 
         <h1 className="title">{personaje.nombre}</h1>
+
+<button 
+            onClick={() => toggleFavorite(personaje)}
+            style={{ backgroundColor: isFavorite(personaje.id) ? 'gold' : 'grey' }}
+        >
+            {isFavorite(personaje.id) ? '★ Quitar de Favoritos' : '☆ Añadir a Favoritos'}
+        </button>
 
         <p className="info"><strong>Rareza:</strong> {personaje.rareza}</p>
         <p className="info"><strong>Coste Elixir:</strong> {personaje.coste_elixir}</p>
