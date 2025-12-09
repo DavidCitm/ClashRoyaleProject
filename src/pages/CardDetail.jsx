@@ -49,11 +49,12 @@ export default function CardDetail() {
         <h1 className="title">{personaje.nombre}</h1>
 
 <button 
-            onClick={() => toggleFavorite(personaje)}
-            style={{ backgroundColor: isFavorite(personaje.id) ? 'gold' : 'grey' }}
-        >
-            {isFavorite(personaje.id) ? '★ Quitar de Favoritos' : '☆ Añadir a Favoritos'}
-        </button>
+            onClick={() => toggleFavorite(personaje)}
+            className="favorite-detail-btn" // <<< AÑADE ESTA CLASE
+            style={{ backgroundColor: isFavorite(personaje.id) ? 'gold' : 'grey' }} // <<< MANTÉN EL ESTILO CONDICIONAL DE COLOR
+        >
+            {isFavorite(personaje.id) ? '★' : '☆'}
+        </button>
 
         <p className="info"><strong>Rareza:</strong> {personaje.rareza}</p>
         <p className="info"><strong>Coste Elixir:</strong> {personaje.coste_elixir}</p>

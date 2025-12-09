@@ -94,3 +94,41 @@
   font-size: 1.2rem;
   font-weight: 700;
 }
+
+/* --- Estilos para el botón de Favoritos en la página de detalle --- */
+.favorite-detail-btn {
+    /* Diseño y Espaciado */
+    padding: 10px 20px;
+    margin: 15px auto 25px auto; /* Centra y da margen */
+    display: block; /* Asegura que 'margin: auto' funcione */
+    width: 80%; /* Ancho del botón */
+    max-width: 300px;
+    
+    /* Tipografía */
+    color: white; /* Color del texto. Esto cambiará con el color de fondo. */
+    font-size: 1.1rem;
+    font-weight: 700;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5); /* Sombra para resaltar el texto */
+    
+    /* Borde y Esquinas */
+    border: none;
+    border-radius: 10px; /* Bordes redondeados */
+    cursor: pointer;
+    
+    /* Sombra (para darle profundidad) */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
+    
+    /* Transición (para un efecto suave al hacer hover) */
+    transition: background-color 0.2s, transform 0.2s, box-shadow 0.2s;
+}
+
+/* Efectos al pasar el ratón (Hover) */
+.favorite-detail-btn:hover {
+    transform: translateY(-2px); /* Ligeramente hacia arriba */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.35);
+}
+
+/* Ajuste de color del texto para el estado 'Añadido' (Gold) */
+.favorite-detail-btn[style*="gold"] {
+    color: black; /* El texto negro queda mejor sobre el fondo dorado */
+}

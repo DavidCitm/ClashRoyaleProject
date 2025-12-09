@@ -6,6 +6,7 @@
   width: 100%;
   max-width: 600px;
   margin: 0 auto;
+  
 }
 
 /* Ocultar título si no lo quieres */
@@ -99,6 +100,7 @@ h1 {
     line-height: 1.1; 
     text-align: center;
     padding: 0;
+    color: #ffffff;
 }
 
 /* ========================================= */
