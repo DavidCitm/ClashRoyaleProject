@@ -1,12 +1,15 @@
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { fetchById } from "../pages/supabase";
 import "./CardDetail.css";
 import { useFavorites } from '../context/FavoritesContext';
 
+// --- 1. IMPORTAMOS LA NUEVA IMAGEN ---
+import imgEspadaFlecha from '../assets/espada-flecha.png';
 
 export default function CardDetail() {
   const { id } = useParams();
+  const navigate = useNavigate();
 
   const [personaje, setPersonaje] = useState(null);
   const [stats, setStats] = useState([]);
@@ -30,16 +33,31 @@ export default function CardDetail() {
     load();
   }, [id]);
 
-
   const { toggleFavorite, isFavorite } = useFavorites();
-
 
   if (loading) return <p>Cargando datos...</p>;
   if (!personaje) return <p>No hay datos del personaje.</p>;
 
+  const favorito = isFavorite(personaje.id);
+
   return (
     <div className="detail-container">
       <div className="card-panel">
+        
+        {/* --- 2. CAMBIAMOS LA FLECHA POR LA IMAGEN --- */}
+        <button className="btn-volver-atras" onClick={() => navigate("/")}>
+          <img src={imgEspadaFlecha} alt="Volver" className="icono-volver" />
+        </button>
+
+        {/* BOTÓN FAVORITOS CIRCULAR (DERECHA) */}
+        <button 
+            onClick={() => toggleFavorite(personaje)}
+            className="favorite-circular-btn" 
+            style={{ backgroundColor: favorito ? 'gold' : 'rgba(0,0,0,0.25)' }} 
+        >
+            {favorito ? '★' : '☆'}
+        </button>
+
         <img
           className="character-image"
           src={personaje.imagen_url}
@@ -47,14 +65,6 @@ export default function CardDetail() {
         />
 
         <h1 className="title">{personaje.nombre}</h1>
-
-<button 
-            onClick={() => toggleFavorite(personaje)}
-            className="favorite-detail-btn" // <<< AÑADE ESTA CLASE
-            style={{ backgroundColor: isFavorite(personaje.id) ? 'gold' : 'grey' }} // <<< MANTÉN EL ESTILO CONDICIONAL DE COLOR
-        >
-            {isFavorite(personaje.id) ? '★' : '☆'}
-        </button>
 
         <p className="info"><strong>Rareza:</strong> {personaje.rareza}</p>
         <p className="info"><strong>Coste Elixir:</strong> {personaje.coste_elixir}</p>

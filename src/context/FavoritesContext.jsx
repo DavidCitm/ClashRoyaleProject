@@ -4,7 +4,6 @@ const FavoritesContext = createContext();
 
 export function FavoritesProvider({ children }) {
   const [favorites, setFavorites] = useState([]);
-
   const [showOnlyFavorites, setShowOnlyFavorites] = useState(false);
 
   const toggleFavorite = (post) => {
