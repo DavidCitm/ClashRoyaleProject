@@ -1,196 +1,193 @@
-/* =========================
-   CONTENEDOR PRINCIPAL
-========================= */
 
 .homepage {
+  padding: 10px 5px 80px 5px; 
   width: 100%;
-  max-width: 1200px;
+  max-width: 600px;
   margin: 0 auto;
-  padding: 110px 24px 120px;
-  position: relative;
-  z-index: 1;
-  font-family: 'ClashRegular', sans-serif;
 }
-
-/* Oscurecer fondo */
 .homepage::before {
   content: "";
   position: fixed;
   inset: 0;
   background: rgba(45, 0, 80, 0.65);
-  z-index: -1;
+  z-index: 0;
+}
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+  display: none; 
 }
 
-/* =========================
-   BARRA DE FILTROS
-========================= */
-
-.filters-bar {
-  width: 100%;
-  max-width: 1100px;
-  margin: 0 auto 35px;
-
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 16px;
-
-  align-items: center;
+.favorites-title {
+    display: block !important;
+    color: white;
+    font-size: 2rem;
+    text-transform: uppercase;
+    text-shadow: 0 4px 0 #000;
+    margin-top: 10px;
+    margin-bottom: 30px;
+    text-align: center;
 }
 
-/* =========================
-   BUSCADOR
-========================= */
-
-.search-input {
-  width: 100%;
-  padding: 14px 22px;
-  border-radius: 30px;
-  border: none;
-  outline: none;
-
-  font-size: 15px;
-  font-family: 'ClashRegular', sans-serif;
-
-  box-shadow: 0 4px 10px rgba(0,0,0,0.25);
-}
-
-/* =========================
-   FILTROS DERECHA
-========================= */
-
-.filters-right {
+/* --- ESTILOS ACTUALIZADOS PARA EL BOTÓN DE VOLVER CON IMAGEN --- */
+.btn-volver-atras {
+  position: absolute;
+  top: 0px;       
+  left: 10px;
+  
+  background: rgba(0, 0, 0, 0.3);
+  border: 2px solid rgba(255,255,255,0.2);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  
+  cursor: pointer;
   display: flex;
   align-items: center;
-  gap: 10px;
-  flex-wrap: nowrap;
+  justify-content: center;
+  transition: all 0.2s ease;
+  z-index: 100;
+  padding: 0; /* Quitamos padding */
 }
 
-/* =========================
-   SELECT ELIXIR
-========================= */
+.btn-volver-atras:hover {
+  background: white;
+  transform: scale(1.1);
+  border-color: white;
+}
+
+/* --- NUEVA CLASE PARA CONTROLAR EL TAMAÑO DE LA IMAGEN --- */
+.icono-volver {
+  width: 30px; /* Tamaño "chiquitín" para el botón de 50px */
+  height: auto;
+  display: block;
+  transition: filter 0.2s ease;
+}
+.btn-volver-atras:hover .icono-volver {
+    filter: brightness(0.6) sepia(1) hue-rotate(200deg);
+}
+
+
+/* --- BUSCADOR Y FILTROS --- */
+.filters {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 30px;
+  align-items: center;
+  min-width: 0; 
+}
+
+.search-input, 
+.elixir-select {
+  padding: 12px 20px;
+  border-radius: 25px;
+  border: none;
+  outline: none;
+  font-size: 14px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  font-family: 'ClashRegular', sans-serif; 
+}
+
+.search-input {
+  flex: 1 1 50%; 
+  min-width: 0;
+}
 
 .elixir-select {
-  padding: 10px 16px;
-  border-radius: 20px;
-  border: none;
-  font-family: 'ClashRegular', sans-serif;
-  font-size: 14px;
+  flex-shrink: 0; 
+  width: 100px; 
+  background-color: white;
   cursor: pointer;
-  background: white;
+  color: #333;
 }
 
-/* =========================
-   BOTONES ORDEN
-========================= */
-
-.order-btn {
-  padding: 9px 14px;
-  border-radius: 16px;
-  border: none;
-  cursor: pointer;
-
-  font-family: 'ClashRegular', sans-serif;
-  font-size: 13px;
-  font-weight: 700;
-
-  background: #ffffff;
-  color: #4a1c85;
-
-  transition: transform 0.15s ease, background 0.15s ease;
-}
-
-.order-btn:hover {
-  transform: scale(1.08);
-}
-
-.order-btn.active {
-  background: #ffd66b;
-  color: #2a1600;
-}
-
-/* =========================
-   BOTÓN LIMPIAR
-========================= */
-
-.clear-btn {
-  padding: 9px 16px;
-  border-radius: 16px;
-  border: none;
-  cursor: pointer;
-
-  font-family: 'ClashRegular', sans-serif;
-  font-size: 13px;
-  font-weight: 700;
-
-  background: #ff6b6b;
-  color: white;
-
-  transition: transform 0.15s ease;
-}
-
-.clear-btn:hover {
-  transform: scale(1.08);
-}
-
-/* =========================
-   GRID DE CARTAS
-========================= */
-
+/* --- GRID BASE --- */
 .cards-container {
-  width: 100%;
-  max-width: 1100px;
-  margin: 0 auto;
-
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-  gap: 22px;
+  grid-template-columns: 1fr 1fr 1fr; 
+  gap: 8px; 
+  padding: 0 5px; 
 }
 
-/* =========================
-   WRAPPER CARTA
-========================= */
+/* --- Estilo de la Carta --- */
+.card {
+  background: linear-gradient(135deg, #7e57c2 0%, #512da8 100%);
+  color: #ffffff;
+  border-radius: 10px; 
+  aspect-ratio: 1 / 1.35; 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 4px 2px; 
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  border: 1px solid rgba(255, 255, 255, 0.1); 
+  transition: transform 0.2s;
+  cursor: pointer;
+  font-family: 'ClashRegular', sans-serif;
+}
+
+.card img {
+  width: 65%; 
+  height: auto;
+  margin-bottom: 1px;
+}
+.card h2 { 
+    font-size: 0.8rem;
+    margin: 0; 
+    padding: 2px 0;
+    line-height: 1;
+}
+
+.card .card-rareza, 
+.card .card-elixir { 
+    margin: 0; 
+    font-size: 0.6rem; 
+    line-height: 1.1; 
+    text-align: center;
+    padding: 0;
+    color: #ffffff;
+}
+
+/* Responsive */
+@media (max-width: 400px) {
+    .cards-container {
+        grid-template-columns: 1fr 1fr;
+        gap: 15px; 
+        padding: 0 15px;
+    }
+
+    .card {
+        aspect-ratio: 1 / 1.15;
+        padding: 8px;
+    }
+    
+    .card h2 {
+        font-size: 1rem;
+    }
+}
 
 .card-wrapper {
-  position: relative;
+    position: relative;
 }
 
-/* =========================
-   FAVORITO
-========================= */
-
-.favorite-btn {
-  position: absolute;
-  top: 8px;
-  right: 8px;
-  z-index: 5;
-
-  background: transparent;
-  border: none;
-  cursor: pointer;
-
-  font-size: 20px;
-  color: gold;
-  text-shadow: 0 0 4px black;
-
-  transition: transform 0.15s ease;
+.favorite-btn,
+.remove-fav-btn {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    font-size: 22px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: gold;
+    text-shadow: 0 0 4px black;
+    transition: transform 0.2s;
+    z-index: 10; 
 }
 
-.favorite-btn:hover {
-  transform: scale(1.2);
-}
-
-/* =========================
-   RESPONSIVE
-========================= */
-
-@media (max-width: 768px) {
-  .filters-bar {
-    grid-template-columns: 1fr;
-    gap: 14px;
-  }
-
-  .filters-right {
-    justify-content: center;
-    flex-wrap: wrap;
-  }
+.favorite-btn:hover,
+.remove-fav-btn:hover {
+    transform: scale(1.2);
 }
