@@ -31,7 +31,7 @@ export default function Arenas() {
 
   return (
     <div className="arenas-container">
-      <h1 className="arenas-title">Arenas</h1>
+      <h1 className="arenas-title"></h1>
 
       <div className="arenas-list">
         {arenas.map(arena => (
