@@ -5,7 +5,7 @@
   width: 100%;
   /* CAMBIO: Reducimos la altura para que sea más compacto */
   height: 65px; 
-  background-color: #6200ea;
+  background-color: #3a0486;
   
   /* Bordes redondeados superiores */
   border-top-left-radius: 25px;
@@ -14,6 +14,7 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
+  
   
   /* Mantenemos 'sticky' o 'fixed' para que quede en el fondo */
   position: fixed; /* CAMBIO: Usamos 'fixed' para que flote sobre el contenido si es necesario */

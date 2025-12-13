@@ -1,80 +1,134 @@
+/* ===================================================== */
 /* ===== CONTENEDOR PRINCIPAL ===== */
+/* ===================================================== */
+
 .arenas-container {
   min-height: 100vh;
-  padding: 2rem;
-  background: linear-gradient(180deg, #3b0077, #8a2be2);
+  padding: 2rem 1rem;
+
+  /* Fondo con wallpaper */
+  background-image: url("/wallpaper.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+
   color: white;
-  overflow-y: auto;
+  display: flex;
+  justify-content: center;
 }
 
+/* Overlay oscuro para legibilidad */
+.arenas-container::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: rgba(45, 0, 80, 0.65);
+  z-index: 0;
+}
+
+/* ===================================================== */
+/* ===== WRAPPER CENTRADO ===== */
+/* ===================================================== */
+
+.arenas-container > * {
+  position: relative;
+  z-index: 1;
+}
+
+.arenas-content {
+  width: 100%;
+  max-width: 800px; /* 👈 evita que llegue de punta a punta */
+  margin: 0 auto;
+}
+
+/* ===================================================== */
 /* ===== TÍTULO ===== */
+/* ===================================================== */
+
 .arenas-title {
   text-align: center;
   font-size: 2.2rem;
   font-weight: 800;
   margin-bottom: 2rem;
-  text-shadow: 0 3px 6px rgba(0, 0, 0, 0.4);
+  text-shadow: 0 3px 6px rgba(0, 0, 0, 0.5);
 }
 
+/* ===================================================== */
 /* ===== LISTA ===== */
+/* ===================================================== */
+
 .arenas-list {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 1.4rem;
 }
 
+/* ===================================================== */
 /* ===== CARD ===== */
+/* ===================================================== */
+
 .arena-card {
-  background: #ffffff10;
-  border: 2px solid #ffffff40;
-  padding: 1.3rem;
+  background: rgba(255, 255, 255, 0.12);
+  border: 2px solid rgba(255, 255, 255, 0.25);
+  padding: 1.3rem 1.5rem;
   border-radius: 20px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
   backdrop-filter: blur(10px);
+
   transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
 
 .arena-card:hover {
-  transform: scale(1.03);
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35);
+  transform: scale(1.02);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.45);
 }
 
+/* ===================================================== */
 /* ===== CONTENIDO HORIZONTAL ===== */
+/* ===================================================== */
+
 .arena-content {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 1rem;
+  gap: 1.5rem;
 }
 
+/* ===================================================== */
 /* ===== TEXTO ===== */
+/* ===================================================== */
+
 .arena-text {
   display: flex;
   flex-direction: column;
 }
 
-/* ===== NOMBRE ===== */
 .arena-name {
   margin: 0;
   font-size: 1.5rem;
-  font-weight: 700;
+  font-weight: 800;
 }
 
-/* ===== COPAS ===== */
 .arena-copas {
-  margin-top: 0.6rem;
-  font-size: 1.2rem;
+  margin-top: 0.4rem;
+  font-size: 1.1rem;
   font-weight: 600;
   color: #ffe9ff;
 }
 
+/* ===================================================== */
 /* ===== IMAGEN ===== */
+/* ===================================================== */
+
 .arena-img {
   width: 90px;
   height: auto;
   object-fit: contain;
   flex-shrink: 0;
-  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.45));
+
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.5));
   transition: transform 0.15s ease;
 }
 
@@ -82,12 +136,17 @@
   transform: scale(1.05);
 }
 
+/* ===================================================== */
 /* ===== RESPONSIVE ===== */
-@media (max-width: 600px) {
-  .arena-content {
-    flex-direction: row;
-  }
+/* ===================================================== */
 
+@media (max-width: 768px) {
+  .arenas-content {
+    max-width: 95%;
+  }
+}
+
+@media (max-width: 600px) {
   .arena-img {
     width: 70px;
   }
