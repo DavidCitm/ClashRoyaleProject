@@ -1,15 +1,18 @@
-/* index.css */
+/* ===================================================== */
+/* ===== FUENTE CLASH ROYALE ===== */
+/* ===================================================== */
+
 @font-face {
-  /* Nombre que usarás en el resto de tu CSS (ej: font-family: 'MiAppFont';) */
-  font-family: 'ClashRegular'; 
-  
-  /* Indica la ruta al archivo (ajusta el nombre si es diferente) */
-  src: url('./fonts/Clash_Regular.otf') format('opentype'); 
-  
-  /* Peso y estilo por defecto */
+  font-family: 'ClashRegular';
+  src: url('./fonts/Clash_Regular.otf') format('opentype');
   font-weight: 400;
   font-style: normal;
 }
+
+
+/* ===================================================== */
+/* ===== CONFIGURACIÓN GLOBAL ===== */
+/* ===================================================== */
 
 :root {
   font-family: Arial, sans-serif;
@@ -21,14 +24,26 @@ html, body {
   padding: 0;
   width: 100%;
   min-height: 100vh;
-  background: linear-gradient(180deg, #3b0075 0%, #180029 100%); 
+
+  /* ===== FONDO GLOBAL ===== */
+  background-image: url("/wallpaper.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   background-attachment: fixed;
+
   color: white;
-   font-family: 'ClashRegular', Arial, sans-serif;
-  /* Arreglo Crítico: Ocultamos desbordamiento horizontal globalmente */
-  overflow-x: hidden; 
+  font-family: 'ClashRegular', Arial, sans-serif;
+
+  /* Evita scroll horizontal */
+  overflow-x: hidden;
 }
 
+
+/* ===================================================== */
+/* ===== NORMALIZACIÓN ===== */
+/* ===================================================== */
+
 * {
-  box-sizing: border-box; /* Aseguramos que padding no sume ancho */
+  box-sizing: border-box;
 }

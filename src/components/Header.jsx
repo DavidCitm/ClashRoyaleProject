@@ -5,23 +5,34 @@ import './Header.css';
 export default function Header() {
   return (
     <header className="header">
+
+      {/* GIF CENTRADO */}
+      <div className="header-center">
+        <img
+          src="/clashroyale.gif"
+          alt="Clash Royale"
+          className="header-gif"
+        />
+      </div>
+
+      {/* BLOQUE DERECHA */}
       <div className="header-stats">
 
-        {/* Boton para favs */}
+        {/* Botón favoritos */}
         <div className="stat-box star-box">
           <Link to="/favorits">
-            <span className="icon" style={{ cursor: "pointer" }}>⭐</span>
+            <span className="icon">⭐</span>
           </Link>
         </div>
 
-        {/* Boton que de momento vuelve al inicio */}
+        {/* Botón inicio */}
         <div className="stat-box upgrade-box">
           <Link to="/">
-            <span className="icon" style={{ cursor: "pointer" }}>▲</span>
+            <span className="icon">▲</span>
           </Link>
         </div>
 
-        {/* Barra  */}
+        {/* Barra */}
         <div className="stat-bar">
           <div className="bar-fill"></div>
         </div>

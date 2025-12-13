@@ -1,4 +1,4 @@
-/* Fondo */
+/* ===== CONTENEDOR PRINCIPAL ===== */
 .arenas-container {
   min-height: 100vh;
   padding: 2rem;
@@ -7,48 +7,96 @@
   overflow-y: auto;
 }
 
-/* Título principal */
+/* ===== TÍTULO ===== */
 .arenas-title {
   text-align: center;
   font-size: 2.2rem;
   font-weight: 800;
   margin-bottom: 2rem;
-  text-shadow: 0 3px 6px rgba(0,0,0,0.4);
+  text-shadow: 0 3px 6px rgba(0, 0, 0, 0.4);
 }
 
-/* Lista scrolleable */
+/* ===== LISTA ===== */
 .arenas-list {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
 }
 
-/* Card */
+/* ===== CARD ===== */
 .arena-card {
   background: #ffffff10;
   border: 2px solid #ffffff40;
   padding: 1.3rem;
   border-radius: 20px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
   backdrop-filter: blur(10px);
-  transition: transform 0.15s ease;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
 
 .arena-card:hover {
   transform: scale(1.03);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35);
 }
 
-/* Nombre arena */
+/* ===== CONTENIDO HORIZONTAL ===== */
+.arena-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+/* ===== TEXTO ===== */
+.arena-text {
+  display: flex;
+  flex-direction: column;
+}
+
+/* ===== NOMBRE ===== */
 .arena-name {
   margin: 0;
   font-size: 1.5rem;
   font-weight: 700;
 }
 
-/* Copas */
+/* ===== COPAS ===== */
 .arena-copas {
   margin-top: 0.6rem;
   font-size: 1.2rem;
   font-weight: 600;
   color: #ffe9ff;
+}
+
+/* ===== IMAGEN ===== */
+.arena-img {
+  width: 90px;
+  height: auto;
+  object-fit: contain;
+  flex-shrink: 0;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.45));
+  transition: transform 0.15s ease;
+}
+
+.arena-card:hover .arena-img {
+  transform: scale(1.05);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 600px) {
+  .arena-content {
+    flex-direction: row;
+  }
+
+  .arena-img {
+    width: 70px;
+  }
+
+  .arena-name {
+    font-size: 1.3rem;
+  }
+
+  .arena-copas {
+    font-size: 1.05rem;
+  }
 }

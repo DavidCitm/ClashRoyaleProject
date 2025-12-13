@@ -1,148 +1,143 @@
-/* CardDetail.css COMPLETO Y ACTUALIZADO */
-
 .detail-container {
   min-height: 100vh;
   width: 100%;
-  background: linear-gradient(180deg, #3b0077, #8a2be2);
   display: flex;
   justify-content: center;
-  padding: 2rem;
+  align-items: center;
+  padding: 1rem;
 }
 
 .card-panel {
-  position: relative; 
+  position: relative;
   width: 100%;
-  max-width: 500px;
+  max-width: 420px;
   background: #7952BF;
-  padding: 2.5rem;
-  border-radius: 25px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.30);
+  padding: 1.5rem 1.3rem;
+  border-radius: 22px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.35);
   text-align: center;
+
+  transition: opacity 0.25s ease, transform 0.25s ease;
 }
 
-/* --- ESTILOS ACTUALIZADOS PARA EL BOTÓN DE VOLVER CON IMAGEN --- */
-.btn-volver-atras {
-  position: absolute;
-  top: 20px;
-  left: 20px;
-  
-  background: rgba(0, 0, 0, 0.25);
-  border: none;
-  width: 45px;
-  height: 45px;
-  border-radius: 50%;
-  
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.2s ease;
-  padding: 0; /* Quitamos el padding */
+.card-panel.animating {
+  opacity: 0;
+  transform: translateY(10px);
 }
 
-.btn-volver-atras:hover {
-  background: white;
-  transform: scale(1.1);
-}
-
-/* --- NUEVA CLASE PARA CONTROLAR EL TAMAÑO DE LA IMAGEN --- */
-.icono-volver {
-  width: 28px; /* Tamaño "chiquitín" ideal para el botón de 45px */
-  height: auto;
-  display: block;
-  /* Un pequeño filtro para que brille al pasar el ratón por el botón */
-  transition: filter 0.2s ease;
-}
-/* Hacemos que el icono se oscurezca un poco al hacer hover sobre el botón blanco */
-.btn-volver-atras:hover .icono-volver {
-    filter: brightness(0.6) sepia(1) hue-rotate(200deg);
-}
-
-
-/* BOTÓN DE FAVORITOS CIRCULAR */
+/* BOTONES SUPERIORES */
+.btn-volver-atras,
 .favorite-circular-btn {
+  
   position: absolute;
-  top: 20px;
-  right: 20px;
-  border: none;
-  width: 45px;
-  height: 45px;
+  top: 12px;
+  width: 38px;
+  height: 38px;
   border-radius: 50%;
-  color: white;
-  font-size: 1.8rem;
-  line-height: 0;
-  padding-bottom: 4px;
-  cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-  transition: all 0.2s ease;
+  z-index: 5;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+
 }
 
 .favorite-circular-btn:hover {
-  transform: scale(1.1);
-  box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+  transform: scale(1.15);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.35);
 }
 
+.btn-volver-atras {
+  left: 12px;
+  background: rgba(0,0,0,0.35);
+  border: none;
+}
+
+.favorite-circular-btn {
+  right: 12px;
+  border: none;
+  font-size: 1.4rem;
+  
+}
+
+.icono-volver {
+  width: 22px;
+}
+
+/* FLECHAS LATERALES */
+.nav-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-70%);
+ 
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: none;
+  font-size: 1.4rem;
+  font-weight: bold;
+  cursor: pointer;
+  background: rgba(0,0,0,0.35);
+  color: white;
+  transition: transform 0.15s ease, background 0.15s ease;
+}
+
+.nav-arrow.left {
+  left: 15px;
+}
+
+.nav-arrow.right {
+  right: 15px;
+}
+
+.nav-arrow:hover {
+  background: rgba(0,0,0,0.55);
+  transform: translateY(-70%) scale(1.1);
+}
+
+.nav-arrow:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+/* IMAGEN */
 .character-image {
-  width: 180px;
-  border-radius: 12px;
+  width: 140px;
+  border-radius: 14px;
+  margin: 20px auto 10px;
   display: block;
-  margin: 0 auto;
-  margin-top: 30px; 
 }
 
+/* TEXTO */
 .title {
-  font-size: 2.2rem;
-  margin-top: 1rem;
-  margin-bottom: 0.5rem;
-  color: #222;
+  font-size: 1.6rem;
+  margin: 0.6rem 0 0.3rem;
   font-weight: 800;
-  text-shadow: 0 2px 3px rgba(0,0,0,0.2);
 }
 
 .info {
-  font-size: 1.1rem;
-  color: #333;
+  font-size: 0.95rem;
+  margin: 0.2rem 0;
   font-weight: 600;
 }
 
 .stats-title {
-  margin-top: 2rem;
-  font-size: 1.7rem;
+  margin: 1rem 0 0.6rem;
+  font-size: 1.3rem;
   font-weight: 800;
-  color: #1d1d1d;
-  text-shadow: 0 2px 3px rgba(0,0,0,0.2);
 }
 
+/* STATS */
 .stats-list {
-  margin-top: 1rem;
   display: flex;
-  flex-direction: column;
-  gap: 1.2rem;
+  justify-content: center;
 }
 
 .stat-card {
-  background: #e3ecff;
-  border: 2px solid #b8c4ff;
-  border-radius: 18px;
-  padding: 1.3rem;
+  width: 100%;
+  max-width: 320px;
+  background: #6e7279;
+  border-radius: 16px;
+  padding: 0.8rem 1rem;
   text-align: left;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-  color: #222;
-}
-
-.stat-card h3 {
-  margin: 0 0 0.7rem 0;
-  font-size: 1.3rem;
-  font-weight: 700;
-  color: #111;
-}
-
-.stat-card p {
-  margin: 0.4rem 0;
-  font-size: 1.05rem;
-  font-weight: 500;
-  color: #222;
 }
