@@ -30,6 +30,9 @@ export default function HomePage() {
 
   return (
     <div className="homepage">
+      {/* Overlay decorativo */}
+      <div className="homepage-overlay"></div>
+
       <h1>Cartas</h1>
 
       {/* FILTROS */}

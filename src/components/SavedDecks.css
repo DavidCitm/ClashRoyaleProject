@@ -1,0 +1,175 @@
+/* Contenedor de todos los mazos */
+.saved-decks {
+  width: 100%;
+  max-width: 900px;
+  margin: 20px auto;
+  padding: 0 10px 150px 10px; /* espacio debajo para footer */
+}
+
+/* Título de la sección */
+.saved-decks h2 {
+  color: white;
+  font-size: 1.8rem;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Grid que contiene todos los mazos */
+.saved-decks-grid {
+  display: flex;
+  flex-direction: column; /* cada mazo debajo del anterior */
+  gap: 40px; /* separación entre mazos */
+}
+
+/* Bloque de cada mazo */
+.saved-deck-block {
+  background: rgba(107, 63, 191, 0.9);
+  padding: 16px;
+  border-radius: 18px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+  position: relative;
+}
+
+/* Header de cada mazo: nombre y X arriba, Avg debajo alineado a la izquierda */
+.saved-deck-header {
+  display: flex;
+  flex-direction: column;
+  gap: 4px; /* espacio entre líneas */
+  margin-bottom: 12px;
+}
+
+/* Primera fila: nombre y X */
+.saved-deck-header .top-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Nombre del mazo */
+.saved-deck-name {
+  font-weight: bold;
+  color: white;
+  font-size: 1.3rem;
+  text-align: left;
+}
+
+/* Botón de borrar */
+.delete-deck-btn {
+  width: 28px;
+  height: 28px;
+  background: rgba(255,0,0,0.7);
+  border: none;
+  border-radius: 50%;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.2s ease;
+}
+
+.delete-deck-btn:hover {
+  transform: scale(1.2);
+}
+
+/* Segunda fila: Avg alineado a la izquierda */
+.saved-deck-avg {
+  font-weight: bold;
+  color: gold;
+  font-size: 1.2rem;
+  text-align: left; /* <-- aquí lo cambiamos de center a left */
+}
+
+
+
+/* Botón de borrar mazo a la derecha */
+.delete-deck-btn {
+  flex: 1;
+  max-width: 28px;
+  width: 28px;
+  height: 28px;
+  background: rgba(255,0,0,0.7);
+  border: none;
+  border-radius: 50%;
+  font-weight: bold;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.2s ease;
+}
+
+.delete-deck-btn:hover {
+  transform: scale(1.2);
+}
+
+/* Grid de cartas de cada mazo: más pegadas */
+.saved-deck {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 cartas por fila */
+  gap: 8px; /* menos separación */
+  justify-items: center;
+}
+
+/* Cada carta del mazo */
+.saved-card {
+  width: 145px;  
+  height: 180px;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.saved-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+/* Slot vacío */
+.empty-slot {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  color: white;
+  font-size: 1.6rem;
+}
+
+/* Responsive: cartas y mazos se ajustan a pantallas pequeñas */
+@media (max-width: 900px) {
+  .saved-card {
+    width: 100px;
+    height: 150px;
+  }
+}
+
+@media (max-width: 600px) {
+  .saved-deck {
+    gap: 6px;
+  }
+  .saved-card {
+    width: 90px;
+    height: 135px;
+  }
+}
+
+@media (max-width: 400px) {
+  .saved-deck {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 4px;
+  }
+  .saved-card {
+    width: 80px;
+    height: 120px;
+  }
+}

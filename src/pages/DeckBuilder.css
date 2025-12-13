@@ -2,15 +2,17 @@
 .deckbuilder-page {
   min-height: 100vh;
   display: flex;
-  justify-content: center;
+  flex-direction: column; /* mejor para mazos guardados debajo */
   align-items: center;
-
+  padding: 100px 10px 80px 10px; /* Aumentamos el padding-top */
   background-image:
     linear-gradient(180deg, rgba(40,0,80,0.7), rgba(20,0,40,0.85)),
     url("/wallpaper.jpg");
   background-size: cover;
   background-position: center;
+  box-sizing: border-box;
 }
+
 
 /* PANEL */
 .deckbuilder-panel {
@@ -20,6 +22,7 @@
   border-radius: 26px;
   padding: 1.6rem;
   box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+  box-sizing: border-box;
 }
 
 /* HEADER */
@@ -27,18 +30,21 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
   margin-bottom: 1.2rem;
 }
 
 .deckbuilder-header h1 {
-  margin: 0;
+  margin: 0 0 8px 0;
   font-size: 1.8rem;
   color: white;
+  flex: 1 1 100%;
 }
 
 .deckbuilder-meta {
   display: flex;
   gap: 0.6rem;
+  flex-wrap: wrap;
 }
 
 .elixir-pill {
@@ -64,6 +70,11 @@
   color: white;
 }
 
+.btn.primary {
+  background: #ffcc00;
+  color: black;
+}
+
 /* DECK GRID */
 .deck-grid {
   display: grid;
@@ -71,7 +82,6 @@
   gap: 1rem;
 }
 
-/* SLOT */
 .deck-slot {
   position: relative;
 }
@@ -84,6 +94,9 @@
   border: 2px dashed rgba(255,255,255,0.3);
   cursor: pointer;
   transition: transform .15s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .slot-btn:hover {
@@ -131,14 +144,17 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 10px;
+  z-index: 1000;
 }
 
 .picker-panel {
-  width: 90%;
+  width: 100%;
   max-width: 1000px;
   background: white;
   border-radius: 20px;
   padding: 1rem;
+  box-sizing: border-box;
 }
 
 .picker-search {
@@ -147,6 +163,7 @@
   border-radius: 12px;
   border: 1px solid #ddd;
   margin-bottom: 1rem;
+  box-sizing: border-box;
 }
 
 .picker-grid {
@@ -172,4 +189,32 @@
 
 .picker-card img {
   width: 60px;
+}
+
+/* MEDIA QUERIES - RESPONSIVE */
+@media (max-width: 1024px) {
+  .deck-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .picker-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .deck-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .picker-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .deck-grid {
+    grid-template-columns: 1fr;
+  }
+  .picker-grid {
+    grid-template-columns: 2fr;
+  }
 }

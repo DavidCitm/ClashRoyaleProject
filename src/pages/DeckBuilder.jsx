@@ -1,18 +1,19 @@
 import { useState, useEffect } from "react";
 import { fetchTable } from "../pages/supabase";
+import { useDeck } from "../context/DecksContext";
+import SavedDecks from "../components/SavedDecks";
 import "./DeckBuilder.css";
 
-const STORAGE_KEY = "deck_builder_v2";
-
 export default function DeckBuilder() {
+  const { deck, setDeck, saveCurrentDeck, clearDeck } = useDeck();
   const [cards, setCards] = useState([]);
-  const [deck, setDeck] = useState(Array(8).fill(null));
-  const [pickerOpen, setPickerOpen] = useState(false);
-  const [activeSlot, setActiveSlot] = useState(null);
-  const [filter, setFilter] = useState("");
-  const [loading, setLoading] = useState(true);
+  const [pickerOpen, setPickerOpen] = useState(false); // picker para elegir carta
+  const [activeSlot, setActiveSlot] = useState(null); // slot activo del deck
+  const [filter, setFilter] = useState(""); // filtro del picker
+  const [loading, setLoading] = useState(true); // estado de carga
+  const [deckName, setDeckName] = useState(""); // nombre del mazo
 
-  /* LOAD CARDS */
+  // Cargar cartas desde Supabase al iniciar
   useEffect(() => {
     async function load() {
       setLoading(true);
@@ -23,22 +24,9 @@ export default function DeckBuilder() {
     load();
   }, []);
 
-  /* LOAD SAVED DECK */
-  useEffect(() => {
-    const raw = localStorage.getItem(STORAGE_KEY);
-    if (raw) {
-      const parsed = JSON.parse(raw);
-      if (Array.isArray(parsed) && parsed.length === 8) setDeck(parsed);
-    }
-  }, []);
-
-  /* SAVE */
-  useEffect(() => {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(deck));
-  }, [deck]);
-
   if (loading) return <p>Cargando cartas...</p>;
 
+  // Calcular el Avg Elixir del mazo actual
   const avgElixir = () => {
     const used = deck.filter(Boolean);
     if (!used.length) return "0.0";
@@ -46,12 +34,14 @@ export default function DeckBuilder() {
     return (sum / used.length).toFixed(2);
   };
 
+  // Abrir picker en el slot seleccionado
   const openPicker = (slot) => {
     setActiveSlot(slot);
     setPickerOpen(true);
-    setFilter("");
+    setFilter(""); // limpiar filtro al abrir
   };
 
+  // Elegir carta para un slot del deck
   const chooseCard = (card) => {
     const newDeck = [...deck];
     newDeck[activeSlot] = card;
@@ -59,10 +49,17 @@ export default function DeckBuilder() {
     setPickerOpen(false);
   };
 
+  // Eliminar carta de un slot
   const removeCard = (slot) => {
     const newDeck = [...deck];
     newDeck[slot] = null;
     setDeck(newDeck);
+  };
+
+  // Guardar el mazo actual con nombre
+  const handleSave = () => {
+    saveCurrentDeck(deckName);
+    setDeckName(""); // limpiar input después de guardar
   };
 
   return (
@@ -72,20 +69,34 @@ export default function DeckBuilder() {
         {/* HEADER */}
         <div className="deckbuilder-header">
           <h1>Creador de Mazos</h1>
-
           <div className="deckbuilder-meta">
+            {/* Avg Elixir */}
             <div className="elixir-pill">
               <strong>{avgElixir()}</strong>
               <span>Avg Elixir</span>
             </div>
-
-            <button className="btn secondary" onClick={() => setDeck(Array(8).fill(null))}>
+            {/* Botón limpiar mazo */}
+            <button className="btn secondary" onClick={clearDeck}>
               Limpiar
             </button>
           </div>
         </div>
 
-        {/* DECK */}
+        {/* Input para nombre del mazo y botón de guardar */}
+        <div style={{ marginBottom: "12px", display: "flex", gap: "8px" }}>
+          <input
+            type="text"
+            placeholder="Nombre del mazo"
+            value={deckName}
+            onChange={(e) => setDeckName(e.target.value)}
+            style={{ flex: 1, padding: "6px 10px", borderRadius: "6px", border: "1px solid #ccc" }}
+          />
+          <button className="btn primary" onClick={handleSave}>
+            Guardar Mazo
+          </button>
+        </div>
+
+        {/* GRID DEL MAZO ACTUAL */}
         <div className="deck-grid">
           {deck.map((card, i) => (
             <div key={i} className="deck-slot">
@@ -102,7 +113,6 @@ export default function DeckBuilder() {
                   <span className="plus">+</span>
                 )}
               </button>
-
               {card && (
                 <button className="remove" onClick={() => removeCard(i)}>✕</button>
               )}
@@ -111,22 +121,21 @@ export default function DeckBuilder() {
         </div>
       </div>
 
-      {/* PICKER */}
+      {/* PICKER DE CARTAS */}
       {pickerOpen && (
         <div className="picker-overlay" onClick={() => setPickerOpen(false)}>
-          <div className="picker-panel" onClick={e => e.stopPropagation()}>
+          <div className="picker-panel" onClick={(e) => e.stopPropagation()}>
             <input
               className="picker-search"
               placeholder="Buscar carta..."
               value={filter}
-              onChange={e => setFilter(e.target.value)}
+              onChange={(e) => setFilter(e.target.value)}
               autoFocus
             />
-
             <div className="picker-grid">
               {cards
-                .filter(c => c.nombre.toLowerCase().includes(filter.toLowerCase()))
-                .map(card => (
+                .filter((c) => c.nombre.toLowerCase().includes(filter.toLowerCase()))
+                .map((card) => (
                   <button
                     key={card.id}
                     className="picker-card"
@@ -141,6 +150,9 @@ export default function DeckBuilder() {
           </div>
         </div>
       )}
+
+      {/* Componente que muestra los mazos guardados*/}
+      <SavedDecks />
     </div>
   );
 }

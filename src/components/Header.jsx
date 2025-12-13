@@ -32,11 +32,6 @@ export default function Header() {
           </Link>
         </div>
 
-        {/* Barra */}
-        <div className="stat-bar">
-          <div className="bar-fill"></div>
-        </div>
-
       </div>
     </header>
   );

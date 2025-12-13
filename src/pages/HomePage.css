@@ -1,17 +1,21 @@
-
 .homepage {
+  position: relative; /* necesario para overlay */
   padding: 10px 5px 80px 5px; 
   width: 100%;
   max-width: 600px;
   margin: 0 auto;
+  min-height: 100vh; /* asegurar altura completa */
 }
-.homepage::before {
-  content: "";
-  position: fixed;
+
+/* Rectángulo morado que cubre toda la pantalla */
+.homepage-overlay {
+  position: fixed; /* cubre toda la pantalla */
   inset: 0;
-  background: rgba(45, 0, 80, 0.65);
+  background: rgba(45, 0, 80, 0.85); /* morado oscuro */
   z-index: 0;
+  pointer-events: none; /* para que no bloquee inputs */
 }
+
 h1 {
   text-align: center;
   margin-bottom: 20px;
@@ -20,62 +24,26 @@ h1 {
 }
 
 .favorites-title {
-    display: block !important;
-    color: white;
-    font-size: 2rem;
-    text-transform: uppercase;
-    text-shadow: 0 4px 0 #000;
-    margin-top: 10px;
-    margin-bottom: 30px;
-    text-align: center;
+  display: block !important;
+  color: white;
+  font-size: 2rem;
+  text-transform: uppercase;
+  text-shadow: 0 4px 0 #000;
+  margin-top: 10px;
+  margin-bottom: 30px;
+  text-align: center;
 }
 
-/* --- ESTILOS ACTUALIZADOS PARA EL BOTÓN DE VOLVER CON IMAGEN --- */
-.btn-volver-atras {
-  position: absolute;
-  top: 0px;       
-  left: 10px;
-  
-  background: rgba(0, 0, 0, 0.3);
-  border: 2px solid rgba(255,255,255,0.2);
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.2s ease;
-  z-index: 100;
-  padding: 0; /* Quitamos padding */
-}
-
-.btn-volver-atras:hover {
-  background: white;
-  transform: scale(1.1);
-  border-color: white;
-}
-
-/* --- NUEVA CLASE PARA CONTROLAR EL TAMAÑO DE LA IMAGEN --- */
-.icono-volver {
-  width: 30px; /* Tamaño "chiquitín" para el botón de 50px */
-  height: auto;
-  display: block;
-  transition: filter 0.2s ease;
-}
-.btn-volver-atras:hover .icono-volver {
-    filter: brightness(0.6) sepia(1) hue-rotate(200deg);
-}
-
-
-/* --- BUSCADOR Y FILTROS --- */
+/* FILTROS */
 .filters {
   display: flex;
   gap: 10px;
+  margin-top: 140px; /* mayor margen superior */
   margin-bottom: 30px;
   align-items: center;
-  min-width: 0; 
+  min-width: 0;
+  position: relative;
+  z-index: 1; /* encima del overlay */
 }
 
 .search-input, 
@@ -102,15 +70,16 @@ h1 {
   color: #333;
 }
 
-/* --- GRID BASE --- */
+/* GRID CARTAS */
 .cards-container {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr; 
   gap: 8px; 
   padding: 0 5px; 
+  position: relative;
+  z-index: 1; /* encima del overlay */
 }
 
-/* --- Estilo de la Carta --- */
 .card {
   background: linear-gradient(135deg, #7e57c2 0%, #512da8 100%);
   color: #ffffff;
@@ -133,61 +102,61 @@ h1 {
   height: auto;
   margin-bottom: 1px;
 }
+
 .card h2 { 
-    font-size: 0.8rem;
-    margin: 0; 
-    padding: 2px 0;
-    line-height: 1;
+  font-size: 0.8rem;
+  margin: 0; 
+  padding: 2px 0;
+  line-height: 1;
 }
 
 .card .card-rareza, 
 .card .card-elixir { 
-    margin: 0; 
-    font-size: 0.6rem; 
-    line-height: 1.1; 
-    text-align: center;
-    padding: 0;
-    color: #ffffff;
+  margin: 0; 
+  font-size: 0.6rem; 
+  line-height: 1.1; 
+  text-align: center;
+  padding: 0;
+  color: #ffffff;
 }
 
-/* Responsive */
 @media (max-width: 400px) {
-    .cards-container {
-        grid-template-columns: 1fr 1fr;
-        gap: 15px; 
-        padding: 0 15px;
-    }
+  .cards-container {
+    grid-template-columns: 1fr 1fr;
+    gap: 15px; 
+    padding: 0 15px;
+  }
 
-    .card {
-        aspect-ratio: 1 / 1.15;
-        padding: 8px;
-    }
-    
-    .card h2 {
-        font-size: 1rem;
-    }
+  .card {
+    aspect-ratio: 1 / 1.15;
+    padding: 8px;
+  }
+  
+  .card h2 {
+    font-size: 1rem;
+  }
 }
 
 .card-wrapper {
-    position: relative;
+  position: relative;
 }
 
 .favorite-btn,
 .remove-fav-btn {
-    position: absolute;
-    top: 8px;
-    right: 8px;
-    font-size: 22px;
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    color: gold;
-    text-shadow: 0 0 4px black;
-    transition: transform 0.2s;
-    z-index: 10; 
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  font-size: 22px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: gold;
+  text-shadow: 0 0 4px black;
+  transition: transform 0.2s;
+  z-index: 10; 
 }
 
 .favorite-btn:hover,
 .remove-fav-btn:hover {
-    transform: scale(1.2);
+  transform: scale(1.2);
 }
