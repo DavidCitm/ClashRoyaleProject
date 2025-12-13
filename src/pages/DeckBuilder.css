@@ -2,9 +2,9 @@
 .deckbuilder-page {
   min-height: 100vh;
   display: flex;
-  flex-direction: column; /* mejor para mazos guardados debajo */
+  flex-direction: column;
   align-items: center;
-  padding: 100px 10px 80px 10px; /* Aumentamos el padding-top */
+  padding: 100px 10px 80px 10px;
   background-image:
     linear-gradient(180deg, rgba(40,0,80,0.7), rgba(20,0,40,0.85)),
     url("/wallpaper.jpg");
@@ -12,7 +12,6 @@
   background-position: center;
   box-sizing: border-box;
 }
-
 
 /* PANEL */
 .deckbuilder-panel {
@@ -23,6 +22,9 @@
   padding: 1.6rem;
   box-shadow: 0 20px 60px rgba(0,0,0,0.5);
   box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* centrado horizontal */
 }
 
 /* HEADER */
@@ -32,6 +34,7 @@
   align-items: center;
   flex-wrap: wrap;
   margin-bottom: 1.2rem;
+  width: 100%;
 }
 
 .deckbuilder-header h1 {
@@ -75,11 +78,16 @@
   color: black;
 }
 
-/* DECK GRID */
+/* DECK GRID - siempre 2 filas de 4, centrado */
 .deck-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(2, 140px);
   gap: 1rem;
+  width: 100%;
+  max-width: 700px;
+  justify-items: center; /* centra cada carta en su celda */
+  margin: 0 auto; /* centra el grid dentro del panel */
 }
 
 .deck-slot {
@@ -88,7 +96,7 @@
 
 .slot-btn {
   width: 100%;
-  height: 140px;
+  height: 100%;
   border-radius: 18px;
   background: rgba(255,255,255,0.1);
   border: 2px dashed rgba(255,255,255,0.3);
@@ -191,10 +199,10 @@
   width: 60px;
 }
 
-/* MEDIA QUERIES - RESPONSIVE */
+/* MEDIA QUERIES */
 @media (max-width: 1024px) {
   .deck-grid {
-    grid-template-columns: repeat(3, 1fr);
+    max-width: 600px;
   }
   .picker-grid {
     grid-template-columns: repeat(4, 1fr);
@@ -203,7 +211,7 @@
 
 @media (max-width: 768px) {
   .deck-grid {
-    grid-template-columns: repeat(2, 1fr);
+    max-width: 500px;
   }
   .picker-grid {
     grid-template-columns: repeat(3, 1fr);
@@ -212,9 +220,9 @@
 
 @media (max-width: 480px) {
   .deck-grid {
-    grid-template-columns: 1fr;
+    max-width: 400px;
   }
   .picker-grid {
-    grid-template-columns: 2fr;
+    grid-template-columns: repeat(2, 1fr);
   }
 }
