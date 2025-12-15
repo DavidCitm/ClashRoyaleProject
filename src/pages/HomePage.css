@@ -1,3 +1,6 @@
+/* =======================
+   CONTENEDOR PRINCIPAL
+   ======================= */
 .homepage {
   position: relative; /* necesario para overlay */
   padding: 10px 5px 80px 5px; 
@@ -7,20 +10,23 @@
   min-height: 100vh; /* asegurar altura completa */
 }
 
-/* Rectángulo morado que cubre toda la pantalla */
+/* Overlay morado que cubre toda la pantalla */
 .homepage-overlay {
-  position: fixed; /* cubre toda la pantalla */
+  position: fixed;
   inset: 0;
   background: rgba(45, 0, 80, 0.85); /* morado oscuro */
   z-index: 0;
-  pointer-events: none; /* para que no bloquee inputs */
+  pointer-events: none; /* no bloquea inputs */
 }
 
+/* =======================
+   TITULOS
+   ======================= */
 h1 {
   text-align: center;
   margin-bottom: 20px;
   font-size: 1.5rem;
-  display: none; 
+  display: none; /* oculto por ahora */
 }
 
 .favorites-title {
@@ -34,11 +40,13 @@ h1 {
   text-align: center;
 }
 
-/* FILTROS */
+/* =======================
+   FILTROS (BUSCADOR + SELECT)
+   ======================= */
 .filters {
   display: flex;
   gap: 10px;
-  margin-top: 140px; /* mayor margen superior */
+  margin-top: 140px; /* margen superior mayor */
   margin-bottom: 30px;
   align-items: center;
   min-width: 0;
@@ -70,7 +78,9 @@ h1 {
   color: #333;
 }
 
-/* GRID CARTAS */
+/* =======================
+   GRID DE CARTAS
+   ======================= */
 .cards-container {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr; 
@@ -80,6 +90,7 @@ h1 {
   z-index: 1; /* encima del overlay */
 }
 
+/* Carta individual */
 .card {
   background: linear-gradient(135deg, #7e57c2 0%, #512da8 100%);
   color: #ffffff;
@@ -120,6 +131,9 @@ h1 {
   color: #ffffff;
 }
 
+/* =======================
+   RESPONSIVE
+   ======================= */
 @media (max-width: 400px) {
   .cards-container {
     grid-template-columns: 1fr 1fr;
@@ -137,6 +151,9 @@ h1 {
   }
 }
 
+/* =======================
+   BOTONES FAVORITOS
+   ======================= */
 .card-wrapper {
   position: relative;
 }

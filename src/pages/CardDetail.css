@@ -1,3 +1,6 @@
+/* =======================
+   CONTAINER PRINCIPAL
+   ======================= */
 .detail-container {
   min-height: 100vh;
   width: 100%;
@@ -7,6 +10,9 @@
   padding: 1rem;
 }
 
+/* =======================
+   PANEL DE LA CARTA
+   ======================= */
 .card-panel {
   position: relative;
   width: 100%;
@@ -17,6 +23,7 @@
   box-shadow: 0 10px 25px rgba(0,0,0,0.35);
   text-align: center;
 
+  /* Animación al cargar/cambiar carta */
   transition: opacity 0.25s ease, transform 0.25s ease;
 }
 
@@ -25,10 +32,11 @@
   transform: translateY(10px);
 }
 
-/* BOTONES SUPERIORES */
+/* =======================
+   BOTONES SUPERIORES
+   ======================= */
 .btn-volver-atras,
 .favorite-circular-btn {
-  
   position: absolute;
   top: 12px;
   width: 38px;
@@ -38,15 +46,16 @@
   align-items: center;
   justify-content: center;
   z-index: 5;
-    transition: transform 0.15s ease, box-shadow 0.15s ease;
-
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
 
+/* Hover efecto favorito */
 .favorite-circular-btn:hover {
   transform: scale(1.15);
   box-shadow: 0 4px 10px rgba(0,0,0,0.35);
 }
 
+/* BOTON VOLVER ATRÁS */
 .btn-volver-atras {
   left: 12px;
   background: rgba(0,0,0,0.35);
@@ -57,19 +66,20 @@
   right: 12px;
   border: none;
   font-size: 1.4rem;
-  
 }
 
+/* ICONO VOLVER */
 .icono-volver {
   width: 22px;
 }
 
-/* FLECHAS LATERALES */
+/* =======================
+   FLECHAS DE NAVEGACIÓN
+   ======================= */
 .nav-arrow {
   position: absolute;
   top: 50%;
   transform: translateY(-70%);
- 
   width: 36px;
   height: 36px;
   border-radius: 50%;
@@ -100,7 +110,9 @@
   cursor: not-allowed;
 }
 
-/* IMAGEN */
+/* =======================
+   IMAGEN DE LA CARTA
+   ======================= */
 .character-image {
   width: 140px;
   border-radius: 14px;
@@ -108,7 +120,9 @@
   display: block;
 }
 
-/* TEXTO */
+/* =======================
+   TEXTO PRINCIPAL
+   ======================= */
 .title {
   font-size: 1.6rem;
   margin: 0.6rem 0 0.3rem;
@@ -127,10 +141,14 @@
   font-weight: 800;
 }
 
-/* STATS */
+/* =======================
+   LISTA DE STATS
+   ======================= */
 .stats-list {
   display: flex;
   justify-content: center;
+  gap: 0.8rem; /* separa tarjetas de stats */
+  flex-wrap: wrap; /* evita overflow en pantallas pequeñas */
 }
 
 .stat-card {
@@ -140,4 +158,5 @@
   border-radius: 16px;
   padding: 0.8rem 1rem;
   text-align: left;
+  color: white;
 }

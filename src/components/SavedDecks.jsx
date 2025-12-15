@@ -13,6 +13,8 @@ export default function SavedDecks() {
     return (sum / used.length).toFixed(2);
   };
 
+
+  // ===== RENDER =====
   return (
     <div className="saved-decks">
       <h2>Mazos guardados</h2>
@@ -47,7 +49,6 @@ export default function SavedDecks() {
                 </div>
               ))}
             </div>
-
           </div>
         ))}
       </div>

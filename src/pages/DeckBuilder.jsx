@@ -5,6 +5,7 @@ import SavedDecks from "../components/SavedDecks";
 import "./DeckBuilder.css";
 
 export default function DeckBuilder() {
+  // ===== ESTADOS =====
   const { deck, setDeck, saveCurrentDeck, clearDeck } = useDeck();
   const [cards, setCards] = useState([]);
   const [pickerOpen, setPickerOpen] = useState(false); // picker para elegir carta
@@ -13,7 +14,8 @@ export default function DeckBuilder() {
   const [loading, setLoading] = useState(true); // estado de carga
   const [deckName, setDeckName] = useState(""); // nombre del mazo
 
-  // Cargar cartas desde Supabase al iniciar
+
+  // ===== CARGA DE DATOS =====
   useEffect(() => {
     async function load() {
       setLoading(true);
@@ -24,9 +26,11 @@ export default function DeckBuilder() {
     load();
   }, []);
 
+  // Mientras carga muestra mensaje
   if (loading) return <p>Cargando cartas...</p>;
 
-  // Calcular el Avg Elixir del mazo actual
+
+  // Para calcular el Avg Elixir del mazo actual
   const avgElixir = () => {
     const used = deck.filter(Boolean);
     if (!used.length) return "0.0";
@@ -62,6 +66,8 @@ export default function DeckBuilder() {
     setDeckName(""); // limpiar input después de guardar
   };
 
+
+  // ===== RENDER =====
   return (
     <div className="deckbuilder-page">
       <div className="deckbuilder-panel">
