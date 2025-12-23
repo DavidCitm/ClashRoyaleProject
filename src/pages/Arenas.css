@@ -5,20 +5,17 @@
 .arenas-container {
   min-height: 100vh;
   padding: 2rem 1rem;
-
-  /* Fondo con wallpaper */
   background-image: url("/wallpaper.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed;
-
   color: white;
   display: flex;
   justify-content: center;
 }
 
-/* Overlay oscuro para legibilidad */
+/* Overlay */
 .arenas-container::before {
   content: "";
   position: fixed;
@@ -27,18 +24,18 @@
   z-index: 0;
 }
 
-/* ===================================================== */
-/* ===== WRAPPER CENTRADO ===== */
-/* ===================================================== */
-
 .arenas-container > * {
   position: relative;
   z-index: 1;
 }
 
+/* ===================================================== */
+/* ===== WRAPPER ===== */
+/* ===================================================== */
+
 .arenas-content {
   width: 100%;
-  max-width: 800px; /* 👈 evita que llegue de punta a punta */
+  max-width: 800px;
   margin: 0 auto;
 }
 
@@ -73,10 +70,8 @@
   border: 2px solid rgba(255, 255, 255, 0.25);
   padding: 1.3rem 1.5rem;
   border-radius: 20px;
-
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
   backdrop-filter: blur(10px);
-
   transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
 
@@ -97,12 +92,13 @@
 }
 
 /* ===================================================== */
-/* ===== TEXTO ===== */
+/* ===== TEXTO (IZQUIERDA) ===== */
 /* ===================================================== */
 
 .arena-text {
   display: flex;
   flex-direction: column;
+  min-width: 180px;
 }
 
 .arena-name {
@@ -119,12 +115,38 @@
 }
 
 /* ===================================================== */
-/* ===== IMAGEN ===== */
+/* ===== CARTAS DESBLOQUEADAS (CENTRO) ===== */
+/* ===================================================== */
+
+.arena-unlocks {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+
+  max-width: 220px;
+  flex-shrink: 0;
+}
+
+.arena-unlock-card {
+  width: 55px;
+  height: auto;
+
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.5));
+  transition: transform 0.15s ease;
+}
+
+.arena-card:hover .arena-unlock-card {
+  transform: scale(1.08);
+}
+
+/* ===================================================== */
+/* ===== IMAGEN ARENA (DERECHA) ===== */
 /* ===================================================== */
 
 .arena-img {
   width: 90px;
-  height: auto;
   object-fit: contain;
   flex-shrink: 0;
 
@@ -140,22 +162,20 @@
 /* ===== RESPONSIVE ===== */
 /* ===================================================== */
 
-@media (max-width: 768px) {
-  .arenas-content {
-    max-width: 95%;
-  }
-}
-
 @media (max-width: 600px) {
   .arena-img {
     width: 70px;
   }
 
-  .arena-name {
-    font-size: 1.3rem;
+  .arena-unlock-card {
+    width: 45px;
   }
 
-  .arena-copas {
-    font-size: 1.05rem;
+  .arena-unlocks {
+    max-width: 150px;
+  }
+
+  .arena-name {
+    font-size: 1.3rem;
   }
 }
