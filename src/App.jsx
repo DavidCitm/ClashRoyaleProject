@@ -9,6 +9,8 @@ import CardDetail from "./pages/CardDetail";
 import Arenas from "./pages/Arenas";
 import FavoritesPage from "./pages/FavoritesPage";
 import DeckBuilder from "./pages/DeckBuilder";
+import PlayerSearch from "./pages/PlayerSearch";
+import PlayerProfile from "./pages/PlayerProfile";
 
 export default function App() {
   return (
@@ -22,6 +24,12 @@ export default function App() {
             <Route path="/arenas" element={<Arenas />} />
             <Route path="/mazo" element={<DeckBuilder />} />
             <Route path="/favorits" element={<FavoritesPage />} />
+
+            {/* 🔍 BUSCADOR */}
+            <Route path="/player-search" element={<PlayerSearch />} />
+
+            {/* 👤 PERFIL */}
+            <Route path="/player/:tag" element={<PlayerProfile />} />
           </Routes>
         </main>
         <Footer />

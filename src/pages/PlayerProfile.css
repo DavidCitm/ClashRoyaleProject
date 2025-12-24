@@ -1,0 +1,42 @@
+.player-profile {
+  padding: 20px;
+  color: white;
+}
+
+.profile-card {
+  background: #3a0486;
+  border-radius: 12px;
+  padding: 15px;
+  text-align: center;
+}
+
+.deck img {
+  width: 60px;
+  margin: 5px;
+}
+
+.battle-card {
+  margin: 10px 0;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.battle-card.win {
+  border: 2px solid #3cff3c;
+  background: rgba(0, 255, 0, 0.1);
+}
+
+.battle-card.lose {
+  border: 2px solid #ff3c3c;
+  background: rgba(255, 0, 0, 0.1);
+}
+
+.battle-decks {
+  display: flex;
+  justify-content: space-between;
+}
+
+.battle-decks img {
+  width: 40px;
+  margin: 2px;
+}

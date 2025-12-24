@@ -6,17 +6,17 @@ import { useNavigate, useLocation } from "react-router-dom";
 import imgCartas from '../assets/icono_cartas.png';
 import imgMazo from '../assets/icono_mazo.png';
 import imgBatalla from '../assets/icono_batalla.png';
+import imgFinder from '../assets/finder.png'; // 👈 NUEVO
 
 export default function Footer() {
   const navigate = useNavigate();
   const location = useLocation();
 
-  // Función para saber si una ruta está activa
   const isActive = (path) => location.pathname === path;
 
   return (
     <footer className="footer">
-      
+
       {/* CARTAS */}
       <button
         className={`footer-btn ${isActive("/") ? "active" : ""}`}
@@ -31,6 +31,14 @@ export default function Footer() {
         onClick={() => navigate("/mazo")}
       >
         <img src={imgMazo} alt="Mazo" className="footer-icon-img" />
+      </button>
+
+      {/* BUSCADOR DE JUGADOR */}
+      <button
+        className={`footer-btn ${isActive("/player-search") ? "active" : ""}`}
+        onClick={() => navigate("/player-search")}
+      >
+        <img src={imgFinder} alt="Buscar jugador" className="footer-icon-img" />
       </button>
 
       {/* ARENAS */}
