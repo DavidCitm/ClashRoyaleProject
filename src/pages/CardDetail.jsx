@@ -147,10 +147,10 @@ export default function CardDetail() {
           {stats.map((s) => (
             <div className="stat-card" key={s.nivel}>
               <h3>Nivel {s.nivel}</h3>
-              <p>❤️ Vida: <strong>{s.vida}</strong></p>
-              <p>⚔️ Daño: <strong>{s.dano}</strong></p>
-              <p>⏱️ Vel. Ataque: <strong>{s.velocidad_ataque}</strong></p>
-              <p>🏃 Vel. Movimiento: <strong>{s.velocidad_movimiento}</strong></p>
+              <p>❤️ HP: <strong>{s.vida}</strong></p>
+              <p>⚔️ Damage: <strong>{s.dano}</strong></p>
+              <p>⏱️ Attack Speed: <strong>{s.velocidad_ataque}</strong></p>
+              <p>🏃 Movement Speed: <strong>{s.velocidad_movimiento}</strong></p>
             </div>
           ))}
         </div>

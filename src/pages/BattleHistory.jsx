@@ -1,15 +1,15 @@
 export default function BattleHistory({ tag }) {
   const [battles, setBattles] = useState([]);
+  const API_URL = import.meta.env.VITE_API_URL;
 
   useEffect(() => {
-    fetch(`http://localhost:3001/player/%23${tag}/battles`)
-      .then((r) => r.json())
+      fetch(`${API_URL}/player/%23${tag}/battles`)      .then((r) => r.json())
       .then(setBattles);
   }, [tag]);
 
   return (
     <div>
-      <h3>Historial</h3>
+      <h3>Record</h3>
       {battles.map((b, i) => {
         const win = b.team[0].crowns > b.opponent[0].crowns;
 

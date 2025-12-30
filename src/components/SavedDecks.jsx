@@ -17,7 +17,7 @@ export default function SavedDecks() {
   // ===== RENDER =====
   return (
     <div className="saved-decks">
-      <h2>Mazos guardados</h2>
+      <h2>SAVED DECKS</h2>
       <div className="saved-decks-grid">
         {savedDecks.map((deckObj, i) => (
           <div key={i} className="saved-deck-block">

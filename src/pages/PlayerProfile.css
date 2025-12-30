@@ -1,42 +1,135 @@
 .player-profile {
-  padding: 20px;
-  color: white;
+  padding: 30px;
+  padding-top: 130px;
+  color: #fff;
+  max-width: 1100px;
+  margin: 0 auto;
 }
 
+/* PERFIL */
 .profile-card {
-  background: #3a0486;
-  border-radius: 12px;
-  padding: 15px;
+  background: linear-gradient(135deg, #4b0ea8, #2c045f);
+  border-radius: 16px;
+  padding: 25px;
   text-align: center;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+}
+
+.player-name {
+  font-size: 2.2rem;
+  margin-bottom: 10px;
+}
+
+.profile-stats {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  font-size: 1.1rem;
+  opacity: 0.95;
+}
+
+/* SECCIONES */
+.section-title {
+  margin: 30px 0 15px;
+  font-size: 1.6rem;
+  border-left: 5px solid #ffd700;
+  padding-left: 10px;
+}
+
+/* MAZO */
+.deck {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
 }
 
 .deck img {
-  width: 60px;
-  margin: 5px;
+  width: 64px;
+  border-radius: 8px;
+  transition: transform 0.2s;
+}
+
+.deck img:hover {
+  transform: scale(1.1);
+}
+
+/* BATALLAS */
+.battles {
+  display: flex;
+  padding-bottom: 100px;
+  flex-direction: column;
+  gap: 16px;
 }
 
 .battle-card {
-  margin: 10px 0;
-  padding: 10px;
-  border-radius: 10px;
+  background: rgba(0,0,0,0.4);
+  border-radius: 14px;
+  padding: 15px;
+  box-shadow: inset 0 0 0 2px transparent;
 }
 
 .battle-card.win {
-  border: 2px solid #3cff3c;
-  background: rgba(0, 255, 0, 0.1);
+  box-shadow: inset 0 0 0 2px #3cff3c;
 }
 
 .battle-card.lose {
-  border: 2px solid #ff3c3c;
-  background: rgba(255, 0, 0, 0.1);
+  box-shadow: inset 0 0 0 2px #ff3c3c;
+}
+
+.battle-header {
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+  margin-bottom: 10px;
 }
 
 .battle-decks {
   display: flex;
   justify-content: space-between;
+  gap: 20px;
 }
 
-.battle-decks img {
+.battle-deck {
+  display: flex;
+  gap: 5px;
+}
+
+.battle-deck img {
   width: 40px;
-  margin: 2px;
+  border-radius: 6px;
+}
+
+.battle-deck.opponent {
+  opacity: 0.85;
+}
+
+/* LOAD / ERROR */
+.loading,
+.error {
+  text-align: center;
+  font-size: 1.3rem;
+  margin-top: 50px;
+}
+@media (max-width: 768px) {
+
+  /* Contenedor general */
+  .player-profile {
+    padding: 16px;
+    padding-top: 110px;
+  }
+
+  /* Barajas de cada batalla */
+  .battle-decks {
+    flex-direction: column;   /* UNA DEBAJO DE OTRA */
+    gap: 12px;
+  }
+
+  .battle-deck {
+    justify-content: center;  /* Centra las cartas */
+    flex-wrap: wrap;          /* Permite saltos de línea */
+  }
+
+  .battle-deck img {
+    width: 34px;              /* Un poco más pequeñas */
+  }
 }
